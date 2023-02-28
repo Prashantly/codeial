@@ -1,0 +1,29 @@
+
+<link rel="stylesheet" href="/css/signin.css">
+
+<form action="/users/create-session" method="POST">
+
+    <div class="imgcontainer">
+        <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740&t=st=1677502180~exp=1677502780~hmac=e1afd0c169d06bb7f2469c576868059c4383b810e2f8a3eb86c6b229d4535cbb" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter Email" name="email" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+        <button type="submit">Login</button>
+
+        <label>
+            <input type="checkbox" checked="checked" name="remember">Remember me
+        </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+</form>
