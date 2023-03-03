@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 //provide connection to database
-mongoose.connect("mongodb://localhost/codeial_development",{family:4});
+mongoose.connect("mongodb://127.0.0.1:27017/codeial_development");
 
 const db = mongoose.connection;
 
