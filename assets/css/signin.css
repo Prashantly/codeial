@@ -1,81 +1,59 @@
-/* Bordered form */
-form{
-    border:1px solid #f1f1f1;
-    width: 35vw;
-    margin: 7vh auto 0 auto;
+#layout-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Jost", sans-serif;
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+}
+#layout-main .main {
+  width: 350px;
+  height: 450px;
+  background: red;
+  overflow: hidden;
+  background: #eee;
+  border-radius: 10px;
+  box-shadow: 5px 20px 50px #000;
+}
+#layout-main .main .login label {
+  color: #573b8a;
+  font-size: 2.4rem;
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#layout-main .main .login input {
+  width: 70%;
+  height: 40px;
+  background: #e0dede;
+  display: flex;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  font-weight: 700;
+}
+#layout-main .main .login button {
+  width: 45%;
+  height: 40px;
+  display: block;
+  margin: 10px auto;
+  color: #fff;
+  background-color: #573b8a;
+  outline: none;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+}
+#layout-main .main .login button:hover {
+  background: #6d44b8;
 }
 
-.container{
-    padding: 16px;
-}
-
-/* Full width inputs */
-input[type="email"],input[type="password"]{
-
-    width: 100%;
-    padding: 12px 20px;
-    margin-bottom: 10px;
-    margin-top: 2px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-input[type="email"]:focus,input[type="password"]:focus{
-     
-    background: #ddd;
-    outline: none;
-}
-
-/* Set a style for all buttons */
-button{
-    background-color: #04AA6D;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-   cursor: pointer;
-   width: 100%;
-}
-
-/* Add a hover effect for buttons */
-button:hover{
-    opacity: 0.8;
-}
-
-/* Extra style for the cancel button (red) */
-.cancelbtn{
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-}
-
-/* Center the avatar image inside this container */
-.imgcontainer{
-    text-align: center;
-    margin: 24px 0 14px 0;
-}
-
-/* Avatar image */
-img{
-    width: 40%;
-    border-radius: 50%;
-}
-
-/* The "Forgot password" text */
-span.psw{
-    float: right;
-    padding-top: 16px;
-}
-
-@media screen and (max-width:300px) {
-    
-    span.psw{
-        display: block;
-        float: none;
-    }
-
-    .cancelbtn{
-        width: 100%;
-    }
-}
+/*# sourceMappingURL=signin.css.map */

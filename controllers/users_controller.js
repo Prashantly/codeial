@@ -42,7 +42,7 @@ module.exports.signIn=function(req,res){
 //get the sign up data
 module.exports.create=function(req,res){
 
-    if(req.body.password != req.body.psw_repeat){
+    if(req.body.password != req.body.confirmPassword){
         return res.redirect('back');
     }
 
@@ -61,6 +61,7 @@ module.exports.create=function(req,res){
 
             })
         }else{
+            console.log("hi")
             return res.redirect("back");
         }
     })
