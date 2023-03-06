@@ -21,6 +21,7 @@
                 align-items: center;
                 font-weight: 600;
                 margin-right: 1.5rem;
+                color: white;
             }
 
             div {
@@ -32,7 +33,9 @@
                 .navbar-nav {
                     display: flex;
                     justify-content: center;
-
+                    margin-top: 0;
+                    padding: 0;
+                    margin-bottom: 0;
                 }
 
                 .left-items {
@@ -49,6 +52,10 @@
                         &:hover{
                             background-color: #605858;
                         } 
+
+                        a{
+                            color: white;
+                        }
                     }
                 }
 
@@ -69,10 +76,16 @@
                         &:hover{
                             background-color: #605858;
                         } 
-                        span {
-                            margin-right: 4px;
-                            color: rgb(231, 223, 223);
+
+                        a{
+                            color: white;
+                            span {
+                                margin-right: 4px;
+                                color: rgb(231, 223, 223);
+                            }
+
                         }
+                        
                     }
                 }
             }

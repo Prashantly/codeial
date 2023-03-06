@@ -18,6 +18,7 @@
   align-items: center;
   font-weight: 600;
   margin-right: 1.5rem;
+  color: white;
 }
 .container #navbar nav div {
   display: flex;
@@ -28,6 +29,9 @@
 .container #navbar nav div .navbar-nav {
   display: flex;
   justify-content: center;
+  margin-top: 0;
+  padding: 0;
+  margin-bottom: 0;
 }
 .container #navbar nav div .left-items {
   width: 16%;
@@ -43,6 +47,9 @@
 }
 .container #navbar nav div .left-items li:hover {
   background-color: #605858;
+}
+.container #navbar nav div .left-items li a {
+  color: white;
 }
 .container #navbar nav div .right-items {
   position: absolute;
@@ -61,7 +68,10 @@
 .container #navbar nav div .right-items li:hover {
   background-color: #605858;
 }
-.container #navbar nav div .right-items li span {
+.container #navbar nav div .right-items li a {
+  color: white;
+}
+.container #navbar nav div .right-items li a span {
   margin-right: 4px;
   color: rgb(231, 223, 223);
 }

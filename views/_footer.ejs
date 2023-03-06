@@ -1,19 +1,32 @@
-<footer>
-    
-    <div id="left">
-        <div>
-            <p>&copy; Prashant Yallatti,Inc.</p>
-            <p>&#174; All Rights Reserved</p>
+<footer id="footer">
+    <div class="container">
+        <div class="footer-copyright">© Copyright 2021 - 2025. All rights reserved.</div>
+
+        <div class="footer-bottom-links">
+            <div class="menu-footer-container">
+                <ul class="menu">
+
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    <li>
+
+                        <% if(locals.user) {%>
+                            <a href="/users/profile">Profile</a>
+                            <% } else {%>
+                                <a href="/users/sign-in">Sign In</a>
+                        <% }%>
+
+                    </li>
+                </ul>
+
+            </div>
+
+
         </div>
 
-        <div>
-            <a href="/">Home</a>
-            <% if(locals.user) {%>
-                <a href="/users/profile">Profile</a>
-            <% } else {%>
-                <a href="/users/sign-in">Sign In</a>
-            <% }%>
-        </div>
+    </div>
 
     </div>
 </footer>
