@@ -1,18 +1,8 @@
 <link rel="stylesheet" href="/css/home.css">
 
-<% if(!locals.user){ %>
-    <div class="welcome">
-        <h2>Welcome to Home Page &#128525</h2>
-        <h3>Kindly sign in to post something exciting &#128515</h3>
-    </div>
-
-    <hr>
-    <% } %>
-
-        <section id="feed-posts">
-
-            <h3>Posts</h3>
-
+<div id="home-flex">
+    <div class="home-flex-child" id="post-info">
+        <div>
             <% if(locals.user){ %>
                 <h4>Post something...</h4>
                 <div class="form-outline">
@@ -25,33 +15,30 @@
                 </div>
 
                 <% } %>
+        </div>
 
-                    <hr>
+        <div id="posts-list-container">
+            <div>
+                <% for (post of posts) {%><%- include("_post") %>
+                        <%}%>
+            </div>
+        </div>
 
-                    <div id="posts-list-container">
+    </div>
 
-                        <ul>
-                            <% for (post of posts) {%>
+    <div class="home-flex-child right-text" id="user-info">
+        <div id="absolute-div-user">
 
-                                <%- include("_post") %>
-                                    <hr>
+            <div>
+                <h4>Users</h4>
+                <%for(u of all_users){%>
+                    <p class="profile-name-holder"><a href="/users/profile/<%= u.id %>">
+                            <%= u.name %>
+                        </a></p>
+                    <%}%>
+            </div>
 
-                                    <%}%>
-                        </ul>
-                    </div>
-        </section>
+        </div>
+    </div>
 
-
-<section id="user-friends">
-
-    <h4>Friends</h4>
-
-    <%for(u of all_users){%>
-
-        <p>
-            <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
-        </p>
-
-    <%}%>
-    
-</section>
+</div>

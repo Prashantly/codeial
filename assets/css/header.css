@@ -1,78 +1,71 @@
-header .nav-container {
-  width: 100%;
-  display: inline-block;
-}
-header .nav-container #navbar nav {
-  overflow: hidden;
-  background-color: #4267B2;
-  position: relative;
-  display: flex;
-  align-items: center;
+header {
+  background-color: #6a6ac1;
+  position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  padding: 0 12px;
+  height: 65px;
+  z-index: 2;
 }
-header .nav-container #navbar nav .navbar-logo {
-  font-size: 1.7rem;
-  display: flex;
-  align-items: center;
-  font-weight: 600;
-  margin-right: 1.5rem;
-  color: white;
-}
-header .nav-container #navbar nav div {
-  display: flex;
-  position: relative;
-  flex-direction: row;
-  width: 100%;
-}
-header .nav-container #navbar nav div .navbar-menu {
-  display: flex;
-  justify-content: center;
-  margin-top: 0;
-  padding: 0;
-  margin-bottom: 0;
-}
-header .nav-container #navbar nav div .left-items {
-  width: 16%;
+header #flex-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-header .nav-container #navbar nav div .left-items li {
-  font-size: 17px;
-  padding: 0.25rem;
   height: 100%;
-  padding: 15px 10px;
 }
-header .nav-container #navbar nav div .left-items li:hover {
-  background-color: #605858;
-}
-header .nav-container #navbar nav div .left-items li a {
-  color: white;
-}
-header .nav-container #navbar nav div .right-items {
-  position: absolute;
-  right: 0;
-  width: 16%;
+header #flex-header #links {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 20px;
 }
-header .nav-container #navbar nav div .right-items li {
-  font-size: 17px;
-  height: 100%;
-  padding: 15px 10px;
+header #flex-header #links .text {
+  margin-left: 25px;
 }
-header .nav-container #navbar nav div .right-items li:hover {
-  background-color: #605858;
-}
-header .nav-container #navbar nav div .right-items li a {
+header #flex-header #links .text a {
   color: white;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  font-family: Copperplate;
 }
-header .nav-container #navbar nav div .right-items li a span {
-  margin-right: 4px;
-  color: rgb(231, 223, 223);
+header #flex-header #site-name {
+  margin: 20px;
+}
+header #flex-header #site-name a h2 {
+  color: white;
+  font-family: Copperplate Gothic Light;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 420px) {
+  header #flex-header #links .text {
+    margin-left: 15px;
+  }
+  header #flex-header #links .text a {
+    font-size: 1rem;
+  }
+  header #flex-header #site-name {
+    margin: 20px;
+  }
+  header #flex-header #site-name a h2 {
+    font-size: 1.3rem;
+  }
+}
+@media only screen and (max-width: 360px) {
+  header #flex-header #links .text {
+    margin-left: 15px;
+  }
+  header #flex-header #links .text a {
+    font-size: 0.7rem;
+  }
+  header #flex-header #site-name {
+    margin: 23px;
+    margin-left: 10px;
+  }
+  header #flex-header #site-name a h2 {
+    font-size: 1rem;
+    margin-bottom: 3px;
+  }
 }
 
 /*# sourceMappingURL=header.css.map */

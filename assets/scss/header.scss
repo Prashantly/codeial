@@ -1,101 +1,105 @@
-header {
+header{
+    
+    background-color: #6a6ac1;
+    position: fixed;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 65px;
+    z-index: 2;
 
-    .nav-container {
-        width: 100%;
-        display: inline-block;
+    #flex-header{
 
-        // NAVIGATION BAR
-        #navbar {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
 
-            nav {
-                overflow: hidden;
-                background-color: #4267B2;
-                position: relative;
-                display: flex;
-                align-items: center;
-                top: 0;
-                width: 100%;
-                padding: 0 12px;
+        #links{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
 
-                .navbar-logo {
-                    font-size: 1.7rem;
-                    display: flex;
-                    align-items: center;
-                    font-weight: 600;
-                    margin-right: 1.5rem;
+            .text{
+                margin-left: 25px;
+                a{
                     color: white;
-                }
-
-                div {
-                    display: flex;
-                    position: relative;
-                    flex-direction: row;
-                    width: 100%;
-
-                    .navbar-menu {
-                        display: flex;
-                        justify-content: center;
-                        margin-top: 0;
-                        padding: 0;
-                        margin-bottom: 0;
-                    }
-
-                    .left-items {
-                        width: 16%;
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-
-                        li {
-                            font-size: 17px;
-                            padding: 0.25rem;
-                            height: 100%;
-                            padding: 15px 10px;
-
-                            &:hover {
-                                background-color: #605858;
-                            }
-
-                            a {
-                                color: white;
-                            }
-                        }
-                    }
-
-
-                    .right-items {
-                        position: absolute;
-                        right: 0;
-                        width: 16%;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-
-                        li {
-                            font-size: 17px;
-                            height: 100%;
-                            padding: 15px 10px;
-
-                            &:hover {
-                                background-color: #605858;
-                            }
-
-                            a {
-                                color: white;
-
-                                span {
-                                    margin-right: 4px;
-                                    color: rgb(231, 223, 223);
-                                }
-
-                            }
-
-                        }
-                    }
+                    text-transform: capitalize;
+                    font-size: 1.2rem;
+                    font-family:Copperplate;
                 }
             }
         }
 
+        #site-name{
+            margin: 20px;
+            a{
+                h2{
+                    color: white;
+                    font-family:Copperplate Gothic Light;
+                    font-size: 1.6rem;
+                    font-weight: bold;
+                }
+            }
+        }
     }
+    
+}
+
+
+@media only screen and (max-width:420px){
+
+    header{
+        #flex-header{
+            #links{
+                .text{
+                    margin-left: 15px;
+                    a{
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+            #site-name{
+                margin: 20px;
+                a{
+                    h2{
+                        
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+        }
+    }
+
+
+}
+
+@media only screen and (max-width:360px){
+
+    header{
+        #flex-header{
+            #links{
+                .text{
+                    margin-left: 15px;
+                    a{
+                        font-size: 0.7rem;
+                    }
+                }
+            }
+
+            #site-name{
+                margin: 23px;
+                margin-left: 10px;
+                a{
+                    h2{
+                        font-size: 1rem;
+                        margin-bottom: 3px;
+                    }
+                }
+            }
+        }
+    }
+
 
 }

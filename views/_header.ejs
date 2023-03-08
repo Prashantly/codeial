@@ -1,55 +1,37 @@
 <header>
 
-    <div class="nav-container">
-        <div id="navbar">
+    <div id="flex-header">
 
-            <nav>
-
-                <a href="" class="navbar-logo">Codeial</a>
-
-                <div>
-                    <!-- left link -->
-                    <ul class="navbar-menu left-items">
-                        <li class="nav-item">
-                            <a href="/">Home</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="">Page 1</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="">Page 2</a>
-                        </li>
-                    </ul>
-
-                    <ul class="navbar-menu right-items">
-                        <% if(locals.user){%>
-
-                            <li class="nav-item">
-                                <a href="/users/profile"><i class="fas fa-user"></i></a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/users/sign-out"><span class="fa fa-sign-out"></span>Sign Out</a>
-                            </li>
-
-                            <%}else{%>
-                                
-                                <li class="nav-item">
-                                    <a href="/users/sign-up"><span class="fa-solid fa-user-plus"></span>Sign Up</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="/users/sign-in"><span class="fa fa-sign-in"></span>Sign In</a>
-                                </li>
-
-                            <%}%>
-                    </ul>
-                </div>
-
-            </nav>
+        <div id="site-name">
+            <a href="/" style="text-decoration: none;">
+                <h2>Facegram</h2>
+            </a>
         </div>
 
-    </div>
+
+        <div id="links">
+            <% if(locals.user){%>
+
+                <div class="text">
+                    <a href="/users/profile/<%= locals.user.id %>">
+                        <%=locals.user.name%>
+                    </a>
+                </div>
+
+                <div class="text">
+                    <a href="/users/sign-out">Sign Out</a>
+                </div>
+
+                <%}else{%>
+
+                    <div class="text">
+                        <a href="/users/sign-up">Sign Up</a>
+                    </div>
+
+                    <div class="text">
+                        <a href="/users/sign-in">Sign In</a>
+                    </div>
+
+                    <%}%>
+        </div>
 </header>
