@@ -1,3 +1,11 @@
+// $spacer: 1rem;
+// $spacers: ( 0:0);
+// @for $i from 1 through 150 {
+//   $spacers: map-merge($spacers, (
+//   $i: ($i * $spacer)
+//   ));
+// }
+
 *{
     box-sizing: border-box;
 }
@@ -15,4 +23,8 @@ ul{
 
 a{
     text-decoration: none;
+}
+
+.alert-info{
+    margin-top: 70px;
 }

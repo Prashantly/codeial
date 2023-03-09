@@ -2,23 +2,21 @@ const express=require('express');
 const cookieParser = require('cookie-parser');
 const app= express();
 const port=8000;
+//using layout library
+const expressLayouts=require("express-ejs-layouts");
 const db=require('./configurations/mongoose');
-
 //used for session cookie
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require("./configurations/passport-local-strategy");
 const MongoStore = require('connect-mongo')(session);
+const flash = require("connect-flash");
+const customMware = require('./configurations/middleware');
 
 app.use(express.urlencoded({extended:true}));
-
 app.use(cookieParser());
-
 // accessing static files
 app.use(express.static("./assets"));
-
-//using layout library
-const expressLayouts=require("express-ejs-layouts");
 app.use(expressLayouts);
 
 app.set('layout extractStyles',true);
@@ -54,15 +52,14 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(passport.setAuthenticatedUser);
 
+// use flash
+app.use(flash());
+app.use(customMware.setFlash);
 
 //use express router
 app.use('/',require("./routes/index"));
-
-
-
 
 app.listen(port,function(err){
 
