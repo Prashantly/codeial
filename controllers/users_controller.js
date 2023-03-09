@@ -1,6 +1,8 @@
 
 const User = require("../models/user");
 
+
+//let's keep it same as before
 module.exports.profile=function(req,res){
 
     User.findById(req.params.id,function(err,user){
