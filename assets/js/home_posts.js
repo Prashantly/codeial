@@ -20,6 +20,9 @@
                     $('#posts-list-container>div').prepend(newPost);
                     deletePost($(".delete-post-button",newPost));
 
+                    // call the create comment class
+                    new PostComments(data.data.post._id);
+
                 }, error: function (error) {
                     console.log(error.responseText)
                 }
@@ -87,6 +90,9 @@
 
     }
 
+    
+
 
     createPost();
+    // convertPostsToAjax();
 }
