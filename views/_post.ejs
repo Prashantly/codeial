@@ -1,8 +1,8 @@
-<li style="list-style-type: none;">
+<div id="post-<%=post._id%>" style="list-style-type: none;">
     <p>
         <% if( locals.user && post.user.id==locals.user.id){%>
             <small>
-                <a href="/posts/destroy/<%= post.id %>">X</a>
+                <a class="delete-post-button" href="/posts/destroy/<%= post.id %>">X</a>
             </small>
             <%}%>
                 <small>
@@ -32,4 +32,4 @@
                         </ul>
                 </div>
     </div>
-</li>
+</div>
