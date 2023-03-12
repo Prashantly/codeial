@@ -1,50 +1,84 @@
-class PostComments{
+class PostComments {
 
-    constructor(postId){
-        
+    constructor(postId) {
+
         this.postId = postId;
         this.postContainer = $(`#post-${postId}`);
         this.newCommentForm = $(`#post-${postId}-comments-form`);
-        console.log(this.newCommentForm);
 
         this.createComment(postId);
-
-        let self = this;
-        
 
     }
 
 
-    createComment(postId){
+    createComment(postId) {
         let globalSelf = this;
 
-        console.log("****",globalSelf);
-        console.log("###",this.newCommentForm);
-
-        this.newCommentForm.submit(function(e){
-
-            let x = e.cancelable;
-            console.log("******",x);
+        this.newCommentForm.submit(function (e) {
 
             e.preventDefault();
-            // let self = this;
-            // console.log($(self));
-            // console.log($(this));
-            
-            // $.ajax({
+            let self = this;
 
-            //     type : 'post',
-            //     url : '/comments/create',
-            //     data : $(self).serialize(),
-            //     success : function(data){
+            $.ajax({
 
-            //         console.log(data);
+                type: 'post',
+                url: '/comments/create',
+                data: $(self).serialize(),
+                success: function (data) {
 
-            //     },error : function(error){
-            //         console.log(error.responseText);
-            //     }
-            // })
+                    // console.log(data.data.comment);
+                    let newComment = globalSelf.newCommentDom(data.data.comment);
+                    $(`#post-comments-${globalSelf.postId}`).prepend(newComment);
+                    globalSelf.deleteComment($('.delete-comment-button',newComment));
+
+                }, error: function (error) {
+                    console.log(error.responseText);
+                }
+            })
         })
+
+    }
+
+    newCommentDom(comment) {
+
+        return $(`<li id="comment-${comment._id}">
+        <p>
+                <small>
+                    <a class="delete-comment-button" href="/comments/destroy/${comment._id}">X</a>
+                </small>
+                    <small>
+                        <i>
+                        ${comment.user.name}
+                        </i>
+                    </small>
+                    <br>
+                    ${comment.content}
+        </p>
+    </li>`)
+    }
+
+
+    //method to delete comment from DOM
+    deleteComment(deleteLink){
+
+        $(deleteLink).click(function(e){
+
+            e.preventDefault();
+
+            $.ajax({
+
+                type : 'get',
+                url : $(deleteLink).prop('href'),
+                success : function(data){
+
+                    $(`#comment-${data.data.comment_id}`).remove();
+
+                },error : function(error){
+                    console.log(error.responseText);
+                }
+            })
+        })
+
 
     }
 }

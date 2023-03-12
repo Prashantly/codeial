@@ -13,8 +13,9 @@ module.exports.create = async function (req, res) {
 
         });
 
-        //check if request is ajax request
+        await post.populate("user");
 
+        //check if request is ajax request
         if(req.xhr){
 
             return res.status(200).json({
