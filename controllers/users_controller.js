@@ -50,6 +50,7 @@ module.exports.update = async function(req,res){
 
                 if(req.file){
 
+                    // this is saving the path of the uploaded file into the vatar field in the user
                     user.avatar = User.avatarPath + '/' + req.file.filename;
                 }
 
