@@ -24,7 +24,7 @@ module.exports.create = async function (req, res) {
 
                     post : post
                 },
-                message : "post created!"
+                message : "Post created!"
             });
         }
 
@@ -59,7 +59,7 @@ module.exports.destroy = async function (req, res) {
                     data : {
                         post_id : req.params.id
                     },
-                    message : "Post deleted"
+                    message : "Post deleted!"
                 })
             }
 

@@ -1,4 +1,5 @@
 {
+
     //method to submit form data for new post using AJAx
     let createPost = function () {
 
@@ -15,7 +16,6 @@
                 data: newPostForm.serialize(),
                 success: function (data) {
 
-                    // console.log(data);
                     let newPost = newPostDom(data.data.post);
                     $('#posts-list-container>div').prepend(newPost);
                     deletePost($(".delete-post-button",newPost));
@@ -23,7 +23,22 @@
                     // call the create comment class
                     new PostComments(data.data.post._id);
 
+                    new Noty({
+                        theme : 'relax',
+                        text: `${data.message}`,
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 1500
+                     }).show()
+
                 }, error: function (error) {
+                    new Noty({
+                        theme : 'relax',
+                        text: `error in creating post`,
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 1500
+                     }).show()
                     console.log(error.responseText)
                 }
             })
@@ -81,18 +96,45 @@
 
                     $(`#post-${data.data.post_id}`).remove();
 
+                    new Noty({
+                        theme : 'relax',
+                        text: `${data.message}`,
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 1500
+                     }).show()
+
                 },error : function(error){
                     console.log(error.responseText);
                 }
             })
         })
+    }
 
+    let convertPostsToAjax = function(){
 
+        $("#posts-list-container>div>div").each(function(){
+            
+            let self = $(this);
+
+            let deleteButton = $('.delete-post-button',self);
+            deletePost(deleteButton);
+
+            // another way to implement
+            // $('.delete-post-button',$(this)).each(function(){
+
+            //     deletePost($(this));
+            // })
+
+            let PostId = self.prop('id').split('-')[1];
+            // console.log(PostId);
+            new PostComments(PostId);
+        })
     }
 
     
 
 
     createPost();
-    // convertPostsToAjax();
+    convertPostsToAjax();
 }
