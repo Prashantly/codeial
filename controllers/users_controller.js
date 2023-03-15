@@ -125,7 +125,7 @@ module.exports.create=function(req,res){
 
             })
         }else{
-            console.log("hi")
+            
             return res.redirect("back");
         }
     })
