@@ -26,8 +26,8 @@ module.exports.destroy = async function (req, res) {
     try {
 
         let post = await Post.findById(req.params.id);
-
-        if(post){
+        
+        if(post.user == req.user.id){
 
             post.remove();
 
@@ -37,6 +37,12 @@ module.exports.destroy = async function (req, res) {
                 message : "post and associated comments deleted successfully"
             });
         
+        }else{
+
+            return res.status(401).json({
+
+                message : 'You are not authorized to delete this post!!'
+            })
         }
 
     } catch (err) {
