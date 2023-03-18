@@ -1,0 +1,53 @@
+.card .card-header .post-date {
+  font-size: 1rem;
+  font-family: serif;
+}
+.card .card-header .dropdown-toggle::after {
+  content: none;
+}
+.card .card-header .dropdown {
+  text-align: right;
+}
+.card .card-header .profile-info .profile-pic-holder {
+  width: 65px;
+  height: 65px;
+  margin: 0px 5px;
+}
+.card .card-header .profile-info .profile-pic-holder img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+}
+.card .card-header .profile-info .profile-name-holder {
+  margin: 0px;
+}
+.card .card-footer a {
+  text-decoration: none;
+}
+.card .card-footer button {
+  width: 130px;
+  text-decoration: none;
+  padding: 3px 3px 3px 3px;
+}
+.card .card-footer button h4 {
+  font-size: 1rem;
+}
+.card .card-footer .btn:focus { /* Removing outlines from all button tags*/
+  outline: none !important;
+  box-shadow: none;
+}
+.card .card-footer form {
+  width: 250px;
+}
+.card .card-footer .post-comments-list ul {
+  list-style-type: none;
+  padding: 0px;
+}
+
+@media only screen and (max-width: 430px) {
+  .card .card-footer form input {
+    font-size: smaller;
+  }
+}
+
+/*# sourceMappingURL=post.css.map */

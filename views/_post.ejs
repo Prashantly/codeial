@@ -1,27 +1,78 @@
-<div id="post-<%=post._id%>" style="list-style-type: none;">
-    <p>
-        <% if( locals.user && post.user.id==locals.user.id){%>
+<link rel="stylesheet" href="/css/post.css">
+
+<div class="card m-4" id="post-<%=post._id%>" style="list-style-type: none;">
+
+    <div class="card-header">
+        <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-row profile-info">
+                <h3 class="profile-pic-holder">
+                    <%if(post.user.avatar){%>
+                        <img src="<%=post.user.avatar%>">
+                        <%}else{%>
+                            <img src="/images/avatar1.png" alt="image">
+                            <%}%>
+
+                </h3>
+                <h4 class="text-capitalize profile-name-holder">
+                    <%= post.user.name %>
+                        <p class="post-date">
+                            <%=post.createdAt%>
+                        </p>
+                </h4>
+
+            </div>
+
+            <% if(locals.user && post.user.id==locals.user.id){%>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" role="button" id="dropdownMenuLink-<%=post.id %>"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink-<%=post.id %>">
+                        <li><a class="delete-post-button dropdown-item" href="/posts/destroy/<%= post.id %>">Delete</a>
+                        </li>
+                    </ul>
+                </div>
+                <%}%>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <p>
             <small>
-                <a class="delete-post-button" href="/posts/destroy/<%= post.id %>">X</a>
+                <%= post.content %>
             </small>
-            <%}%>
-                <small>
-                    <i>
-                        <%=post.user.name%>
-                    </i>
-                </small>
-    </p>
-    <p>
-        <%=post.content%>
-    </p>
-    <div class="post-comments">
-        <% if(locals.user){ %>
-            <form action="/comments/create" method="POST" id="post-<%= post._id %>-comments-form">
-                <input type="text" name="content" placeholder="Add your comment" required>
-                <input type="hidden" name="post" value="<%= post._id%>">
-                <input type="submit" value="add comment">
-            </form>
-            <%}%>
+            <br>
+        </p>
+    </div>
+
+
+    <div class="card-footer text-muted d-flex flex-row">
+
+        <div class="mx-0">
+            <button class="btn btn-link btn-block" type="button" data-bs-toggle="collapse"
+                data-bs-target="#post-<%=post._id%>-collapse" aria-expanded="false">
+                <h4>
+                    <i class="fas fa-comment"></i>
+                    Comments
+                </h4>
+            </button>
+        </div>
+    </div>
+
+        <div id="post-<%=post._id%>-collapse" class="collapse card-footer">
+            <div class="card-body">
+                <div>
+                    <% if(locals.user){ %>
+                        <form action="/comments/create" method="POST" id="post-<%= post._id %>-comments-form">
+                            <input type="text" name="content" placeholder="Add your comment" required>
+                            <input type="hidden" name="post" value="<%= post._id%>">
+                            <input type="submit" value="Add">
+                        </form>
+                    <%}%>
+                </div>
+
                 <div class="post-comment-list">
                     <ul id="post-comments-<%=post._id%>">
                         <% for(comment of post.comments){ %>
@@ -29,7 +80,8 @@
                             <%- include("_comment") %>
                            
                         <%}%>
-                        </ul>
+                    </ul>
                 </div>
+            </div>
+        </div>
     </div>
-</div>

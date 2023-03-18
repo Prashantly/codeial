@@ -18,6 +18,8 @@ passport.use(new googleStrategy({
 
             if(err){console.log("Error in google strategy passport: ",err); return;}
 
+            console.log(accessToken,refreshToken);
+
             console.log(profile);
 
             if(user){

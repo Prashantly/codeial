@@ -1,16 +1,39 @@
+<link rel="stylesheet" href="/css/comment.css">
+
 <li id="comment-<%= comment._id %>">
-    <p>
-        <%if( locals.user && comment.user.id==locals.user.id){%>
-            <small>
-                <a class="delete-comment-button" href="/comments/destroy/<%= comment._id %>">X</a>
-            </small>
+    <div class="media m-2 border-bottom">
+        <h3 class="profile-pic-holder">
+            <%if(comment.user.avatar){%>
+                <img src="<%=comment.user.avatar%>" alt="image">
+            <%}else{%>
+                <img src="/images/avatar2.png" alt="image">
             <%}%>
-                <small>
-                    <i>
-                        <%= comment.user.name %>
-                    </i>
-                </small>
-                <br>
+        </h3>
+
+        <div class="media-body">
+            <div class="d-flex flex-row justify-content-between" style="height: 22px; width: 150px;">
+
+                <div class="comment-user-name">
+                    <h5 class="mt-0"><%= comment.user.name %></h5>
+                </div>
+                <div>
+                    <%if(locals.user && locals.user.id==comment.user.id){%>
+                        <p>
+                            <a class="delete-comment-button" href="/comments/destroy/<%= comment._id %>">X</a>
+                        </p>
+                    <%}%>
+                </div>
+
+            </div>
+            <div class="comment-content">
                 <%= comment.content %>
-    </p>
+            </div>
+
+        </div>
+    
+
+    </div>
+
+    
+
 </li>
