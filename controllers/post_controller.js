@@ -1,6 +1,7 @@
 
 const Post = require("../models/post");
 const Comment = require("../models/comment");
+const postMailer = require("../mailer/posts_mailer");
 
 module.exports.create = async function (req, res) {
 
@@ -13,7 +14,9 @@ module.exports.create = async function (req, res) {
 
         });
 
-        await post.populate("user");
+        post = await post.populate("user",'name email');
+        postMailer.newPost(post);
+
 
         //check if request is ajax request
         if(req.xhr){

@@ -5,12 +5,14 @@ exports.newComment = (comment) =>{
 
     // console.log('inside newComment Mailer');
 
+    let htmlString = nodeMailer.renderTemplate({comment : comment},"/comments/new_comment.ejs")
+
     nodeMailer.transporter.sendMail({
 
         from : 'prashantyallatti79968@gmail.com',
         to : comment.user.email,
         subject : "New Comment Published!",
-        html : '<h1>Yes, Your comment is now published!</h1>'
+        html : htmlString
     },(err,info) => {
 
         if(err){
