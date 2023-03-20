@@ -50,33 +50,84 @@
 
     let newPostDom = function (post) {
 
-        return $(`<div id="post-${post._id}" style="list-style-type: none;">
-                    <p>
-                            <small>
-                                <a class="delete-post-button" href="/posts/destroy/${post._id}">X</a>
-                            </small>
-                                <small>
-                                    <i>
-                                    ${post.user.name}
-                                    </i>
-                                </small>
-                    </p>
-                    <p>
-                    ${post.content}
-                    </p>
-                    <div class="post-comments">
-                            <form action="comments/create" method="POST" id="post-${post._id}-comments-form">
-                                <input type="text" name="content" placeholder="Add your comment" required>
-                                <input type="hidden" name="post" value="${ post._id}">
-                                <input type="submit" value="add comment">
-                            </form>
-                                <div class="post-comment-list">
-                                    <ul id="post-comments-${post._id}">
+        return $(`
+        <div class="card m-4" id="post-${post._id}" style="list-style-type: none;">
+
+    <div class="card-header">
+        <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-row profile-info">
+                <h3 class="profile-pic-holder" style="width: 55px; height: 55px; margin: 0px 5px;">
+                    
+                ${post.user.avatar ? `<img src="${post.user.avatar}" alt="image" style = "width: 100%;height: 100%; border-radius: 50px;"alt="image">`
+                        
+                    : `<img src="/images/avatar1.png" alt="image" style = "width: 100%;height: 100%; border-radius: 50px;">`
+                }         
+
+                </h3>
+                <h4 class="text-capitalize profile-name-holder">
+                    ${post.user.name}
+                </h4>
+
+            </div>
+
             
-                                    </ul>
-                                </div>
-                            </div>
-                </div>`)
+                <div class="dropdown">
+                    <a class="dropdown-toggle" role="button" id="dropdownMenuLink-${post.id}"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink-${post.id}">
+                        <li><a class="delete-post-button dropdown-item" href="/posts/destroy/${post.id}">Delete</a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <p>
+            <small>
+                ${post.content}
+            </small>
+            <br>
+        </p>
+    </div>
+
+
+    <div class="card-footer text-muted d-flex flex-row">
+
+        <div class="mx-0">
+            <button class="btn btn-link btn-block" type="button" data-bs-toggle="collapse"
+                data-bs-target="#post-${post._id}-collapse" aria-expanded="false">
+                <h4>
+                    <i class="fas fa-comment"></i>
+                    Comments
+                </h4>
+            </button>
+        </div>
+    </div>
+
+        <div id="post-${post._id}-collapse" class="collapse card-footer">
+            <div class="card-body">
+                <div>
+                    
+                        <form action="/comments/create" method="POST" id="post-${post._id}-comments-form">
+                            <input type="text" name="content" placeholder="Add your comment" required>
+                            <input type="hidden" name="post" value="${post._id}">
+                            <input type="submit" value="Add">
+                        </form>
+                    
+                </div>
+
+                <div class="post-comment-list">
+                    <ul id="post-comments-${post._id}" style="list-style-type: none; padding: 0px;>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>`)
 
     }
 
