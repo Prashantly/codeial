@@ -31,6 +31,8 @@ class PostComments {
                     $(`#post-comments-${globalSelf.postId}`).prepend(newComment);
                     globalSelf.deleteComment($('.delete-comment-button',newComment));
 
+                    new ToggleLike($(" .toggle-like-button",newComment));
+
                     new Noty({
                         theme : 'relax',
                         text: `${data.message}`,
@@ -49,20 +51,42 @@ class PostComments {
 
     newCommentDom(comment) {
 
-        return $(`<li id="comment-${comment._id}">
-        <p>
-                <small>
-                    <a class="delete-comment-button" href="/comments/destroy/${comment._id}">X</a>
-                </small>
-                    <small>
-                        <i>
-                        ${comment.user.name}
-                        </i>
-                    </small>
-                    <br>
-                    ${comment.content}
-        </p>
-    </li>`)
+        return $(`
+        <li id="comment-${ comment._id}">
+    <div class="media m-2 border-bottom">
+        <h3 class="profile-pic-holder style="width: 55px; height: 55px; margin: 0px 5px;">
+        ${comment.user.avatar ? `<img src="${comment.user.avatar}" alt="image"  style = "width: 100%;height: 100%; border-radius: 50px;">`
+        :`<img src="/images/avatar1.png" style = "width: 100%;height: 100%; border-radius: 50px;" alt="image">`
+    }
+        </h3>
+
+        <div class="media-body">
+            <div class="d-flex flex-row justify-content-between" style="height: 22px; width: 150px;">
+
+                <div class="comment-user-name">
+                    <h5 class="mt-0" style = "font-size: medium;text-transform: capitalize;">${comment.user.name}</h5>
+                </div>
+                <div>
+                    
+                        <p>
+                            <a class="delete-comment-button" href="/comments/destroy/${comment._id }">X</a>
+                        </p>
+                    
+                </div>
+
+            </div>
+            <div class="comment-content" style="font-size: small; width: 260px;">
+                ${ comment.content}
+            </div>
+            <small>
+            <a class = "toggle-like-button" data-likes ="${comment.likes.length}" href="/likes/toggle/?id=${comment._id}&type=Comment" style="text-decoration: none;">
+            ${comment.likes.length} <i class="far fa-thumbs-up"></i>
+            </a> 
+            </small>
+
+        </div>
+    </div>
+</li>`)
     }
 
 

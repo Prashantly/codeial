@@ -23,6 +23,8 @@
                     // call the create comment class
                     new PostComments(data.data.post._id);
 
+                    new ToggleLike($(" .toggle-like-button",newPost));
+
                     new Noty({
                         theme : 'relax',
                         text: `${data.message}`,
@@ -97,7 +99,15 @@
 
     <div class="card-footer text-muted d-flex flex-row">
 
-        <div class="mx-0">
+            <div class="mx-2">
+                
+                    <a class="toggle-like-button" data-likes="${post.likes.length}" href="/likes/toggle/?id=${post._id}&type=Post">
+                        ${post.likes.length} <i class="fas fa-thumbs-up"></i>
+                    </a>
+
+            </div>
+
+        <div class="mx-2">
             <button class="btn btn-link btn-block" type="button" data-bs-toggle="collapse"
                 data-bs-target="#post-${post._id}-collapse" aria-expanded="false">
                 <h4>

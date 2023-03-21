@@ -48,25 +48,36 @@
     </div>
 
 
-    <div class="card-footer text-muted d-flex flex-row">
+    <%if(locals.user){%>
+        <div class="card-footer text-muted d-flex flex-row">
 
-        <div class="mx-2">
-            <a clss="toggle-like-button" href="">
-                <i class="fas fa-thumbs-up"></i>
-            </a>
+            <div class="mx-2">
+                <%if(locals.user){%>
+                    <% if(post.likes.find(x=> x.user == locals.user.id)){ %>
+                    <a class="toggle-like-button" data-likes="<%=post.likes.length%>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
+                        <%=post.likes.length%> <i class="fas fa-thumbs-up"></i>
+                    </a>
+                    <% } else{ %>
+                    <a class="toggle-like-button" data-likes="<%=post.likes.length%>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
+                        <%=post.likes.length%> <i class="far fa-thumbs-up"></i>
+                    </a>
+                    <% } %>
+                <%}else{%>
+                    <%=post.likes.length%> <i class="far fa-thumbs-up"></i>
+               <%}%>
 
+            </div>
+
+            <div class="mx-2">
+                <button class="btn btn-link btn-block" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#post-<%=post._id%>-collapse" aria-expanded="false">
+                    <h4>
+                        <i class="fas fa-comment"></i>
+                        Comments
+                    </h4>
+                </button>
+            </div>
         </div>
-
-        <div class="mx-2">
-            <button class="btn btn-link btn-block" type="button" data-bs-toggle="collapse"
-                data-bs-target="#post-<%=post._id%>-collapse" aria-expanded="false">
-                <h4>
-                    <i class="fas fa-comment"></i>
-                    Comments
-                </h4>
-            </button>
-        </div>
-    </div>
 
         <div id="post-<%=post._id%>-collapse" class="collapse card-footer">
             <div class="card-body">
@@ -77,18 +88,20 @@
                             <input type="hidden" name="post" value="<%= post._id%>">
                             <input type="submit" value="Add">
                         </form>
-                    <%}%>
+                        <%}%>
                 </div>
 
                 <div class="post-comment-list">
                     <ul id="post-comments-<%=post._id%>">
                         <% for(comment of post.comments){ %>
-                            
+
                             <%- include("_comment") %>
-                           
-                        <%}%>
+
+                                <%}%>
                     </ul>
                 </div>
             </div>
         </div>
-    </div>
+
+        <%}%>
+</div>

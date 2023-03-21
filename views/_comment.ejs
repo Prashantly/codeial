@@ -28,12 +28,22 @@
             <div class="comment-content">
                 <%= comment.content %>
             </div>
+            <small>
+                <%if(locals.user){%>
+                    <% if(comment.likes.find(x=> x.user == locals.user.id)){ %>
+                        <a class = "toggle-like-button" data-likes =  "<%=comment.likes.length%>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment" style="text-decoration: none;">
+                            <%=comment.likes.length%> <i class="fas fa-thumbs-up"></i>
+                        </a>  
+                        <% } else{ %>
+                            <a class = "toggle-like-button" data-likes =  "<%=comment.likes.length%>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment" style="text-decoration: none;">
+                                <%=comment.likes.length%> <i class="far fa-thumbs-up"></i>
+                            </a>  
+                        <% } %>   
+                <%}else{%>
+                    <%=comment.likes.length%> <i class="far fa-thumbs-up"></i>
+                <%}%>
+            </small>
 
         </div>
-    
-
     </div>
-
-    
-
 </li>

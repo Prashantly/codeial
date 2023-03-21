@@ -2,6 +2,7 @@
 const Post = require("../models/post");
 const Comment = require("../models/comment");
 const postMailer = require("../mailer/posts_mailer");
+const Like = require("../models/like");
 
 module.exports.create = async function (req, res) {
 
@@ -51,6 +52,11 @@ module.exports.destroy = async function (req, res) {
 
         // .id means converting the object id into string
         if (post.user == req.user.id) {
+
+
+            //delete thr associated like for the posts and its comments like too
+            await Like.deleteMany({likeable : post, onModel:"Post"});
+            await Like.deleteMany({likeable : {$in : post.comments}});
 
             post.remove();
 
