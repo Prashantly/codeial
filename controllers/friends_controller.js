@@ -36,8 +36,8 @@ module.exports.destroy = async function(req,res){
         let fromUser = await User.findById(req.user._id);
         let toUser = await User.findById(req.query.toid);
 
-        await User.findByIdAndUpdate(fromUser,{$pull : {friendship : req.query.toid}});
-        await User.findByIdAndUpdate(toUser,{$pull : {friendship : req.user._id}});
+        await User.findByIdAndUpdate(fromUser,{$pull : {friendships : req.query.toid}});
+        await User.findByIdAndUpdate(toUser,{$pull : {friendships : req.user._id}});
 
         req.flash('success','Friend deleted');
         return res.redirect('back');

@@ -32,7 +32,7 @@ const userSchema= new mongoose.Schema({
     friendships : [
         {
             type : mongoose.Schema.Types.ObjectId,
-            ref : 'Friendship'
+            ref : 'User'
         }
     ]
 },{
