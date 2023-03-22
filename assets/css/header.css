@@ -26,6 +26,7 @@ header #flex-header #links .text a {
   text-transform: capitalize;
   font-size: 1.2rem;
   font-family: Copperplate;
+  text-decoration: none;
 }
 header #flex-header #site-name {
   margin: 20px;

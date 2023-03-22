@@ -95,10 +95,10 @@
 </div>
 
 <div id="profile-options">
-   <!-- <div id="timeline" class="profile-child" onclick="showTimeline()">
+   <div id="timeline" class="profile-child" onclick="showTimeline()">
        <h4><i class="fas fa-stream"></i></h4>
        <h3>Timeline</h3>
-   </div> -->
+   </div>
 
    <div id="friends" class="profile-child" onclick="showFriends()">
        <h4><i class="fas fa-user-friends"></i></h4>
@@ -173,7 +173,7 @@
 
                      <%}else{%>
 
-                        <img src="/images/avatar2" alt="image">
+                        <img src="/images/avatar1.png" alt="image">
 
                      <%}%>
 
@@ -203,11 +203,11 @@
 
 <script>
 
-// function showTimeline(){
-//         $('#post-display-container').css('display','block');
-//         $('#friend-display-container').css('display','none');
-//         $('#alluser-display-container').css('display','none');
-//     }
+function showTimeline(){
+        $('#post-display-container').css('display','block');
+        $('#friend-display-container').css('display','none');
+        $('#alluser-display-container').css('display','none');
+    }
 
     function showFriends(){
         $('#post-display-container').css('display','none');
@@ -220,6 +220,14 @@
         $('#friend-display-container').css('display','none');
         $('#alluser-display-container').css('display','block');
     }
+
+//     var loadFile = function(event) {
+//     var output = document.getElementById('output');
+//     output.src = URL.createObjectURL(event.target.files[0]);
+//     output.onload = function() {
+//       URL.revokeObjectURL(output.src) // free memory
+//     }
+//   };
 
 </script>
 
