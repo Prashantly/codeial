@@ -1,8 +1,9 @@
+const Chat = require("../models/chat");
+const Chatroom = require("../models/chatroom");
 
-module.exports.chatSockets = function(socketServer){
+module.exports.chatSockets = async function(socketServer){
 
-    let io = require('socket.io')(socketServer,{
-
+    let io = require("socket.io")(socketServer,{
         cors : {
             origin : "http://localhost:8000",
             methods: ["GET", "POST"]
@@ -10,28 +11,22 @@ module.exports.chatSockets = function(socketServer){
     });
 
     io.sockets.on('connection',function(socket){
-        console.log('new connection received.',socket.id);
+
+        console.log("New connection received : ", socket.id);
 
         socket.on('disconnect',function(){
-
-            console.log('socket is disconnected');
-
+            console.log("Connection Disconnected---------->");
         });
 
-        socket.on('join_room',function(data){
+        socket.on("send_message",function(msg){
 
-            console.log('joining request received',data);
-
-            socket.join(data.chatroom);
-
-            io.in(data.chatroom).emit('user_joined',data);
-
+            //we have to send "msg" to all clients(who connected to this chat app browser throghh this socket)
+            //broadcast means message will be sent to all the users who are connected throgh this socket connection except user who sent 
+            //that message first. message won't return back to user who sent first
+            // we already inserted sent message from sender in dom 
+            socket.broadcast.emit('receive_message',msg);
         });
+    });
 
-        socket.on('send_message',function(data){
-
-            io.in(data.chatroom).emit('receive_message',data);
-        })
-    })
 
 }

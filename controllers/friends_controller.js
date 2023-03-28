@@ -1,5 +1,4 @@
 const User = require("../models/user");
-const Frienship = require("../models/freindship");
 
 
 module.exports.create = async function(req,res){

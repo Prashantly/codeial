@@ -1,27 +1,38 @@
 
-<link rel="stylesheet" href="/css/chatroom.css">
+<link rel="stylesheet" href="/css/chat.css">
 
 
-<% if (locals.user){ %>
-	<div id="user-chat-box">
-		<ul id="chat-messages-list">
-			<li class="other-message">
-				<span>Other Message</span>
-			</li>
-			<li class="self-message">
-				<span>
-					Self Message
-				</span>
-				
-			</li>
+<section class="chat_section">
 
-		</ul>
-		<div id="chat-message-input-container">
-			<input id="chat-message-input" placeholder="Type message here">
-			<button id="send-message">Send</button>
-		</div>
+    <div class="brand">
 
-	</div>
-<% } %>
+        <img src="/images/chatsup.png" height="45" alt="chat-logo">
+        <h1>Chatsup</h1>
+
+    </div>
+
+    <div class="chat-room-users">
+        <h2>Chat Room</h2>
+    </div>
+    <div id="room-list">
+        <div class="chat-list" id="friend-id">
+            <div class="friend-wrapper">
+                <div class="friend-avatar">
+                    <img src="" alt="friend-profile">
+                </div>
+                <div class="friend-name">Prashant</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="message-area"></div>
+
+    <div>
+         <textarea id="textarea" cols="30" rows="1" placeholder="Write a message..."></textarea>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js" integrity="sha512-xbQU0+iHqhVt7VIXi6vBJKPh3IQBF5B84sSHdjKiSccyX/1ZI7Vnkt2/8y8uruj63/DVmCxfUNohPNruthTEQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/js/chat_engine.js"></script>
 
 

@@ -1,74 +1,68 @@
-class ChatEngine{
+const socket = io();
 
-    constructor(chatBoxId,userEmail){
+let Name;
+let textarea = $('#textarea');
+let messageArea = $(".message-area");
 
-        this.chatBox = $(`#${chatBoxId}`);
-        this.userEmail = userEmail;
+do{
 
-        this.socket = io.connect("http://localhost:5000");
+    Name = prompt("Enter your name: ")
 
-        if(this.userEmail){
-            this.connectionHandler();
-        }
+}while(!Name);
 
+textarea.keyup(function(e){
+
+    if( e.key == 'enter' || e.key=="Enter"){
+
+        sendMessage($(e.target).val());
+        
     }
 
-    connectionHandler(){
+})
 
-        let self = this;
-        console.log(self);
-        this.socket.on('connect',function(){
-            console.log("connection establshed using sockets.....!");
+function sendMessage(message){
 
-            self.socket.emit('join_room',{
-
-                user_email : self.userEmail,
-                chatroom : 'codeial'
-            });
-
-            self.socket.on('user_joined',function(data){
-                console.log('a user joined',data);
-            })
-        });
-
-
-        $('#send-message').click(function(){
-
-            let message = $("#chat-message-input").val();
-
-            if(message != ""){
-                self.socket.emit('send_message',{
-                    message : message,
-                    user_email : self.userEmail,
-                    chatroom : 'codeial'
-                });
-            }
-        });
-
-        self.socket.on('receive_message',function(data){
-            console.log("message received",data.message);
-
-            //create list item
-            let newMessage = $('<li>');
-
-            let messageType = "other-message";
-
-            if(data.user_email == self.userEmail){
-                messageType = "self-message";
-            }
-
-            newMessage.append($('<span>',{
-                'html' : data.message
-            }));
-
-            newMessage.append($('<sub>',{
-                'html' : data.user_email
-            }));
-
-            newMessage.addClass(messageType);
-
-            $("#chat-messages-list").append(newMessage);
-
-        })
+    let msg = {
+        username : Name,
+        message : message.trim()
     }
+
+    // append to DOM
+    appendMessage(msg,'outgoing');
+    $(textarea).val("");
+    scrollToBottom();
+
+    // send to server
+    socket.emit("send_message",msg);
 }
+
+function appendMessage(msg,msgType){
+
+    let mainDiv = $("<div>").addClass([msgType,"message"]);
+
+    let markup = `
+         <h4>${msg.username}</h4>
+         <p>${msg.message}</p>
+    `
+
+    mainDiv.html(markup);
+    messageArea.append(mainDiv);
+
+
+}
+
+
+//receive messages coming from server
+
+socket.on("receive_message",function(msg){
+    
+    appendMessage(msg,'incoming');
+    scrollToBottom();
+})
+
+
+function scrollToBottom(){
+
+    messageArea[0].scrollTop = messageArea[0].scrollHeight;
+}
+

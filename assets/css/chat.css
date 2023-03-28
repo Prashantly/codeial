@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f8f8f8;
+  font-family: "Roboto", sans-serif;
+}
+body .chat_section {
+  width: 800px;
+  max-width: 90%;
+  background: #fff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+body .chat_section .brand {
+  padding: 20px;
+  background-color: #f1f1f1;
+  display: flex;
+  align-items: center;
+}
+body .chat_section .brand h1 {
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #444;
+  margin-left: 10px;
+}
+body .chat_section .message-area {
+  height: 500px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  /* show scrollbar only when it is necessery */
+  overflow-y: auto;
+  padding-top: 40px;
+}
+body .chat_section .message-area .message {
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 40px;
+  max-width: 300px;
+  position: relative;
+}
+body .chat_section .message-area .message h4 {
+  position: absolute;
+  left: 0;
+  top: -20px;
+  color: #333;
+  font-size: 14px;
+}
+body .chat_section .message-area .incoming {
+  background: #8F8BE8;
+  color: #fff;
+}
+body .chat_section .message-area .outgoing {
+  background: #e9eafd;
+  color: #787986;
+  margin-left: auto;
+}
+body .chat_section #textarea {
+  width: 100%;
+  border: none;
+  padding: 20px;
+  font-size: 16px;
+  outline: none;
+  background-color: #f0eaea;
+}
+
+/*# sourceMappingURL=chat.css.map */

@@ -9,7 +9,7 @@ h5 {
     padding: 0;
 }
 
-.right-text{
+.right-text {
     text-align: right;
 }
 
@@ -17,41 +17,136 @@ body {
     background-color: #eeeeee;
 }
 
-#home-flex{
+#home-flex {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 65px;
-    .home-flex-child{
 
+    .home-flex-child {
+
+        .card {
+            width: 450px;
+        }
+    }
+
+    #user-dashboard {
+        width: 330px;
+
+        #absolute-div-dashboard {
+            position: fixed;
+        }
+
+        #dashboard-pic {
+            height: 250px;
+            width: 250px;
+            margin: auto;
+
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 8px;
+                margin-top: 10px;
+            }
+        }
+
+        #friends-dashboard-count {
+            h5 {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    #post-info {
+        width: 500px;
+
+        .card-body {
+            textarea {
+                width: 80%;
+            }
+
+            #flex-input {
+                display: flex;
+                flex-wrap: nowrap;
+
+                div {
+                    width: 300px;
+                }
+            }
+
+            #preview-image {
+                width: 200px;
+                height: 200px;
+                margin: auto;
+                margin-top: 15px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+
+        }
+    }
+
+    #user-info {
+        width: 260px;
+        margin-right: 14px;
+    
+        #absolute-div-user{
+            height: 80vh;
+            position: fixed;
+            top: 70px;
+            right: 34px;
+            overflow-y: scroll;
+
+        }
+
+        #absolute-div-user::-webkit-scrollbar{
+            width: 0;
+            display: none;
+        }
+
+        h4{
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .list-group-item{
+            margin: 0px;
+            padding: 7px 20px;
+
+            .profile-pic-holder{
+                width: 45px;
+                height: 45px;
+                margin: 0px 6px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50px;
+                  }
+            }
+
+            .profile-name-holder{
+                padding-top: 7px;
+
+                a{
+                    text-decoration: none;
+                    color: black;
+                    text-transform: capitalize;
+                }
+
+                a:hover{
+                    color: #7e6c91;
+                }
+            }
+        }
         
     }
 }
 
-#post-info{
-    width: 500px;
-    margin-left: 20px;
-}
 
-#user-info{
-    width : 240px;
-    margin-right: 15px;
-    border-left: 1px solid #333;
 
-    #absolute-div-user {
-        position: fixed;
-        right: 35px;
-        top: 70px;
-        height: 80vh;
-        overflow-y: scroll;
-    }
-
-    #absolute-div-user::-webkit-scrollbar {
-        width: 0;
-        display: none;
-    }
-    h4{
-        text-align: center;
-    }
-}
