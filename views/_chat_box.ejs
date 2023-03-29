@@ -1,38 +1,61 @@
 
 <link rel="stylesheet" href="/css/chat.css">
 
+<button class="open-button" onclick="openChat()">Chat</button>
 
-<section class="chat_section">
+<div class="chat-popup">
+<section id="chat_section">
 
     <div class="brand">
 
         <img src="/images/chatsup.png" height="45" alt="chat-logo">
         <h1>Chatsup</h1>
 
-    </div>
-
-    <div class="chat-room-users">
-        <h2>Chat Room</h2>
-    </div>
-    <div id="room-list">
-        <div class="chat-list" id="friend-id">
-            <div class="friend-wrapper">
-                <div class="friend-avatar">
-                    <img src="" alt="friend-profile">
-                </div>
-                <div class="friend-name">Prashant</div>
-            </div>
+        <div class="cancel-chat" onclick="closeChat()">
+            <i class="fa-regular fa-circle-xmark fa-xl" style="color: #d62801f1;"></i>
         </div>
+        
     </div>
 
-    <div class="message-area"></div>
+    <div class="message-area">
+        <!-- <div class="incoming message">
+            <h4>Rakesh</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus error vel quos laborum non suscipit fugiat architecto quam, illo aspernatur quidem! Molestiae eum accusantium, voluptatibus repellendus ut architecto totam tempore?</p>
+        </div>
+
+        <div class="outgoing message">
+            <h4>Rajesh</h4>
+            <p>Lorem ipsum dolor sit,</p>
+        </div> -->
+    </div>
 
     <div>
          <textarea id="textarea" cols="30" rows="1" placeholder="Write a message..."></textarea>
     </div>
+
+    
+
 </section>
+</div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js" integrity="sha512-xbQU0+iHqhVt7VIXi6vBJKPh3IQBF5B84sSHdjKiSccyX/1ZI7Vnkt2/8y8uruj63/DVmCxfUNohPNruthTEQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="/js/chat_engine.js"></script>
+
+<!--script to open and close chat box -->
+<script>
+
+    function openChat(){
+        document.getElementById("chat_section").style.display = "block";
+        document.querySelector(".open-button").style.display = "none";
+    }
+
+    function closeChat(){
+        document.getElementById("chat_section").style.display = "none";
+        document.querySelector(".open-button").style.display = "block";
+    }
+
+
+</script>
 
 
