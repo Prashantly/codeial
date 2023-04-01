@@ -3,6 +3,7 @@ const Post = require("../models/post");
 const Comment = require("../models/comment");
 const postMailer = require("../mailer/posts_mailer");
 const Like = require("../models/like");
+const path = require('path');
 
 module.exports.create = async function (req, res) {
 
@@ -39,6 +40,38 @@ module.exports.create = async function (req, res) {
 
         // console.log('Error', err);
         req.flash('error',err);
+        return res.redirect('back');
+    }
+}
+
+module.exports.upload = async function (req,res){
+
+    try{
+
+        await Post.uploadedImage(req,res,async function(err){
+
+            if(err){
+                console.log('***multerError: ',err);
+                return;
+            }
+
+            let mainPath = path.join(Post.imagePath,'/',req.file.filename);
+
+            let post = await Post.create({
+                user : req.user._id,
+                postImage : mainPath
+            })
+
+            req.flash('success', 'Post created successfully');
+            console.log("File response", req.file);
+           return res.redirect('back');
+
+        })
+
+
+    }catch(err){
+        req.flash('error',err);
+        console.log('image uplpoad error',err);
         return res.redirect('back');
     }
 }

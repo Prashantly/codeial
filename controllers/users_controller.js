@@ -79,7 +79,7 @@ module.exports.update = async function(req,res){
 
                     // }
 
-                    // this is saving the path of the uploaded file into the vatar field in the user
+                    // this is saving the path of the uploaded file into the avatar field in the user
                     user.avatar = User.avatarPath + '/' + req.file.filename;
                 }
 

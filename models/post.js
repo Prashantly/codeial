@@ -8,7 +8,6 @@ const postSchema = new mongoose.Schema({
 
     content : {
         type : String,
-        required : true
     },
 
     user: {
@@ -46,7 +45,7 @@ const storage = multer.diskStorage({
 
 postSchema.statics.uploadedImage = multer({
     storage : storage,
-    fileFilter : function(req, res, callback){
+    fileFilter : function(req, file, callback){
         var ext = path.extname(file.originalname);
         if(ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
             callback(new Error('Only images are allowed'), false);

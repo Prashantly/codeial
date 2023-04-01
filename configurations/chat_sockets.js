@@ -12,14 +12,14 @@ module.exports.chatSockets = async function (socketServer) {
 
     io.sockets.on('connection', function (socket) {
 
-        console.log("New connection received : ", socket.id);
+        // console.log("New connection received : ", socket.id);
 
         socket.on('disconnect', function () {
             console.log("Connection Disconnected---------->");
         });
 
         socket.on('join_room', async function (data) {
-            console.log("joining request received", data);
+            // console.log("joining request received", data);
 
             socket.join(data.chat_room);
 

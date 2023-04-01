@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="/css/post.css">
 
 <div class="card m-4" id="post-<%=post._id%>" style="list-style-type: none;">
@@ -5,20 +6,20 @@
     <div class="card-header">
         <div class="d-flex flex-row justify-content-between">
             <div class="d-flex flex-row profile-info">
-                <h3 class="profile-pic-holder">
+                <h4 class="profile-pic-holder">
                     <%if(post.user.avatar){%>
                         <img src="<%=post.user.avatar%>">
                         <%}else{%>
                             <img src="/images/avatar1.png" alt="image">
                             <%}%>
 
-                </h3>
-                <h4 class="text-capitalize profile-name-holder">
+                </h4>
+                <h5 class="text-capitalize profile-name-holder">
                     <%= post.user.name %>
                         <p class="post-date">
                             <%=post.createdAt%>
                         </p>
-                </h4>
+                </h5>
 
             </div>
 
@@ -39,15 +40,19 @@
     </div>
 
     <div class="card-body">
+    <%if(post.postImage){%>
+        <div class="posted-image">
+            <img src="<%= post.postImage%>" alt="post">
+        </div>
+    <%}else{%>
         <p>
             <small>
-                <%= post.content %>
+                <%=post.content%>
             </small>
             <br>
         </p>
+    <%}%>
     </div>
-
-
     <%if(locals.user){%>
         <div class="card-footer text-muted d-flex flex-row">
 
