@@ -1,6 +1,10 @@
 $mainFont: 'Open Sans', sans-serif;
 $mainColor: #333333;
 
+h1,h2,h3,h4,h5{
+    margin: 0;
+}
+
 header {
     background-color: #042d4600;
     position: relative;
@@ -86,12 +90,14 @@ body {
 
     .right {
         padding: 40px;
+        margin: 2rem;
         overflow: hidden;
 
         h5 {
             font-size: 5vmax;
             line-height: 0;
             margin-top: 50px;
+            margin-bottom: 70px;
             color: #0e0658be;
         }
 

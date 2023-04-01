@@ -1,3 +1,7 @@
+h1, h2, h3, h4, h5 {
+  margin: 0;
+}
+
 header {
   background-color: rgba(4, 45, 70, 0);
   position: relative;
@@ -85,6 +89,7 @@ body {
   font-size: 5vmax;
   line-height: 0;
   margin-top: 35px;
+  margin-bottom: 80px;
   color: rgba(34, 151, 1, 0.8392156863);
 }
 .auth-form .right p {

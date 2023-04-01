@@ -1,22 +1,24 @@
 #footer {
   background: #212d43;
-  color: #fff;
-  position: absolute;
-  bottom: 0px;
+  position: fixed;
+  bottom: 0;
   left: 0px;
-  right: 0px;
+  width: 100%;
+  height: 60px;
   margin-bottom: 0px;
-  padding: 20px;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 #footer .container {
-  display: flex;
+  display: inline-flex;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
+  height: 100%;
   flex-wrap: wrap;
 }
 #footer .container .footer-copyright {
   text-align: center;
+  color: white;
 }
 #footer .container .menu {
   display: flex;
