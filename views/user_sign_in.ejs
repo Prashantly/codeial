@@ -1,21 +1,35 @@
 <link rel="stylesheet" href="/css/signin.css">
 
-<div class="main">
-    <div class="login">
+<div class="auth-form">
 
-        <form action="/users/create-session" method="POST">
-            <label>Sign In</label>
-            <input type="email" name="email" placeholder="Email" required="">
-            <input type="password" name="password" placeholder="Password" required="">
-            <button type="submit">Sign in</button>
+    <div class="left">
+        <div class="overlay">
+            <h1>Connect with your friends and family.</h1>
+            <p></p>
+            <span>
+                <p>Login with Google and make your experience faster</p>
+                <a href="/users/auth/google"><i class="fab fa-google"></i></a>
+            </span>
 
-        </form>
-
-        <div>
-            <p>
-                <a href="/users/auth/google">Google Sign In/Sign Up</a>
-            </p>
         </div>
 
     </div>
+
+    <form action="/users/create-session" method="POST">
+
+        <div class="right">
+            <h5>Login</h5>
+            <p>Don't have an account? <a href="/users/sign-up"><br>Create an account.</a></p>
+            <div class="inputs">
+                <input type="email" name="email" placeholder="Email" required><br>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <br>
+            <br>
+            <button type="submit">Login</button>
+
+        </div>
+    </form>
+
 </div>

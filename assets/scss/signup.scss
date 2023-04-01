@@ -1,70 +1,158 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
+$mainFont: 'Open Sans', sans-serif;
+$mainColor: #333333;
 
-#layout-main{
+header{
+    background-color: #042d4600;
+    position: relative;
+}
+
+body {
+    background-image: linear-gradient( 135deg, #FAB2FF 10%, #1904E5 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: $mainFont;
+    color: $mainColor;
+}
+
+.auth-form{
+    width: 75%;
+    background: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 5px auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: 'Jost', sans-serif;
-    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    flex : 1 1 100%;
+    justify-content: space-between;
+    align-items: stretch;
+    box-shadow: 0 0 20px 6px #090b6f85;
 
-    .main{
+    @media  (max-width: 980px) {
+        flex-flow:wrap;
+        text-align: center;
+        align-content: center;
+        align-items: center;
+        
+    }
 
-        width: 350px;
-        height: 500px;
-        background:red;
+    div{
+        height: auto;
+    }
+
+    .left{
+        color: #FFFFFF;
+        background-image: url("https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX3442366.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
         overflow: hidden;
-        background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
-        border-radius: 10px;
-	    box-shadow: 5px 20px 50px #000;
 
-        .signup{
-            position: relative;
-            width:100%;
+        .overlay{
+            padding: 30px;
+            width: 100%;
             height: 100%;
+            background: #5961f9ad;
+            overflow: hidden;
+            box-sizing: border-box;
 
-            label{
-                color: #fff;
-                font-size: 2.4rem;
-                display: flex;
-                justify-content: center;
-                margin: 40px;
-                font-weight: bold;
-	            cursor: pointer;
+            h1{
+                font-size: 10vmax;
+                line-height: 1;
+                font-weight: 900;
+                margin-top: 40px;
+                margin-bottom: 20px;
             }
 
-            input{
-                width: 70%;
-                height: 40px;
-                background: #e0dede;
-                display: flex;
-                margin: 20px auto;
-                padding: 10px;
-                border-radius: 5px;
-                outline: none;
-                border: none;
-                font-weight: 700;
+            p{
+                font-weight: 500;
+                font-size: 18px;
             }
 
-            button{
-                width: 45%;
-                height: 40px;
-                display: block;
-                margin: 10px auto;
-                color: #fff;
-                background-color: #573b8a;
-                outline: none;
-                border: none;
-                font-size: 1em;
-                font-weight: bold;
-                margin-top: 20px;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: .2s ease-in;
-                &:hover{
-                    background: #6d44b8;
+            span{
+                p{
+                    margin-top: 30px;
+                    font-weight: 900;
+                    
                 }
+
+                a{
+                    background: #3b5998;
+                    color:#FFFFFF;
+                    margin-top: 10px;
+                    padding: 14px 50px;
+                    border-radius: 100px;
+                    display: inline-block;
+                    box-shadow: 0 3px 6px 1px #042d4657;
+                }
+                a:last-child{background: #1c1ab5c4;}
             }
+        }
+
+    }
+
+    .right{
+        padding: 30px;
+        overflow: hidden;
+
+        h5{
+            font-size: 5vmax;
+            line-height: 0;
+            margin-top: 35px;
+            color: #229701d6;
+        }
+
+        p{
+            font-size: 15px;
+            color: #B0B3B9;
+            a{
+                color: #412dfa;
+                font-weight: 600;
+            }
+
+            a:hover{
+                color: rgb(176, 66, 84);
+            }
+        }
+
+        .inputs{
+            overflow: hidden;
+        }
+
+        input{
+            width: 100%;
+            padding: 10px;
+            margin-top: 25px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            border-bottom: 2px solid #B0B3B9;
+        }
+
+        button{
+            float: right;
+            padding: 12px 35px;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            box-shadow: 0px 4px 20px 0px #49c628a6;
+            background-image: linear-gradient( 135deg, #70F570 10%, #49C628 100%);
+
         }
     }
 }
+
+@media only screen and (max-width: 980px) {
+    form{
+        width: 100%;
+    }            
+}
+
+@media only screen and (max-width: 440px){
+    .box-form{
+        width: 90%;
+    }
+}
+
+
