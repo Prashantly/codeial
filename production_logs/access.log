@@ -1,0 +1,4 @@
+::1 - - [03/Apr/2023:17:10:24 +0000] "GET / HTTP/1.1" 304 - "http://localhost:8000/users/profile/642af1290284df127f6f67d1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [03/Apr/2023:17:11:18 +0000] "GET /users/profile/642af18b0284df127f6f67e7 HTTP/1.1" 200 20345 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [03/Apr/2023:17:23:39 +0000] "GET / HTTP/1.1" 200 12505 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [03/Apr/2023:17:25:04 +0000] "GET / HTTP/1.1" 304 - "http://localhost:8000/users/profile/642af18b0284df127f6f67e7" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
