@@ -208,11 +208,9 @@
 
         let selfDate = $(this).text();
         selfDate = selfDate.trim();
-        console.log(selfDate);
         let month = selfDate.substring(4,7);
         let date = selfDate.substring(8,10);
         let newdate = date + " " + month + " at " + selfDate.substring(17,21);
-        console.log(newdate);
 
         $(this).text(newdate);
     })
