@@ -1,4 +1,5 @@
 const express=require('express');
+const env = require('./configurations/environment');
 const cookieParser = require('cookie-parser');
 const app= express();
 const port=8000;
@@ -24,7 +25,7 @@ console.log("chat server is listening on port 5000")
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 // accessing static files
-app.use(express.static("./assets"));
+app.use(express.static(env.asset_path));
 
 //make the uploades path available to browser
 app.use('/uploads',express.static(__dirname + '/uploads'));
@@ -44,7 +45,7 @@ app.set("views","./views");
 app.use(session({
 
     name : 'codeial',
-    secret : 'something',
+    secret : env.session_cookie_key,
     saveUninitialized : false,
     resave : false,
     cookie : {
