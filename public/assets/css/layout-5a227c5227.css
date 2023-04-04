@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  line-height: 1.5;
+  color: #1b2a45;
+  margin: 0;
+}
+
+.layout-main {
+  width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.alert-info {
+  margin-top: 70px;
+}
+
+/*# sourceMappingURL=layout.css.map */

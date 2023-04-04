@@ -1,0 +1,72 @@
+header {
+  background-color: #6a6ac1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 65px;
+  z-index: 2;
+}
+header #flex-header {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+header #flex-header #links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+header #flex-header #links .text {
+  margin-left: 25px;
+}
+header #flex-header #links .text a {
+  color: white;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  font-family: Copperplate;
+  text-decoration: none;
+}
+header #flex-header #site-name {
+  margin: 16px 20px;
+}
+header #flex-header #site-name a h2 {
+  color: white;
+  font-family: Copperplate Gothic Light;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 420px) {
+  header #flex-header #links .text {
+    margin-left: 15px;
+  }
+  header #flex-header #links .text a {
+    font-size: 1rem;
+  }
+  header #flex-header #site-name {
+    margin: 10px 20px;
+  }
+  header #flex-header #site-name a h2 {
+    font-size: 1.3rem;
+  }
+}
+@media only screen and (max-width: 360px) {
+  header #flex-header #links .text {
+    margin-left: 10px 15px;
+  }
+  header #flex-header #links .text a {
+    font-size: 0.7rem;
+  }
+  header #flex-header #site-name {
+    margin: 23px;
+    margin-left: 10px;
+  }
+  header #flex-header #site-name a h2 {
+    font-size: 1rem;
+    margin-bottom: 3px;
+  }
+}
+
+/*# sourceMappingURL=header.css.map */

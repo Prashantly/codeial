@@ -1,0 +1,118 @@
+ul,
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding: 0;
+}
+
+.right-text {
+  text-align: right;
+}
+
+body {
+  background-color: #eeeeee;
+}
+
+#home-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 65px;
+}
+#home-flex .home-flex-child .card {
+  width: 450px;
+}
+#home-flex #user-dashboard {
+  width: 330px;
+}
+#home-flex #user-dashboard #absolute-div-dashboard {
+  position: fixed;
+}
+#home-flex #user-dashboard #dashboard-pic {
+  height: 250px;
+  width: 250px;
+  margin: auto;
+}
+#home-flex #user-dashboard #dashboard-pic img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+#home-flex #user-dashboard #friends-dashboard-count h5 {
+  font-size: 1rem;
+}
+#home-flex #post-info {
+  width: 500px;
+}
+#home-flex #post-info .card-body textarea {
+  width: 80%;
+}
+#home-flex #post-info .card-body #flex-input {
+  display: flex;
+  flex-wrap: nowrap;
+}
+#home-flex #post-info .card-body #flex-input div {
+  width: 300px;
+}
+#home-flex #post-info .card-body #preview-image {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  margin-top: 15px;
+}
+#home-flex #post-info .card-body #preview-image img {
+  width: 100%;
+  height: 100%;
+}
+#home-flex #user-info {
+  width: 260px;
+  margin-right: 14px;
+}
+#home-flex #user-info #absolute-div-user {
+  height: 80vh;
+  position: fixed;
+  top: 70px;
+  right: 34px;
+  overflow-y: scroll;
+}
+#home-flex #user-info #absolute-div-user::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+#home-flex #user-info h4 {
+  text-align: center;
+  margin-bottom: 6px;
+}
+#home-flex #user-info .list-group-item {
+  margin: 0px;
+  padding: 7px 20px;
+}
+#home-flex #user-info .list-group-item .profile-pic-holder {
+  width: 45px;
+  height: 45px;
+  margin: 0px 6px;
+}
+#home-flex #user-info .list-group-item .profile-pic-holder img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+}
+#home-flex #user-info .list-group-item .profile-name-holder {
+  padding-top: 7px;
+}
+#home-flex #user-info .list-group-item .profile-name-holder a {
+  text-decoration: none;
+  color: black;
+  text-transform: capitalize;
+}
+#home-flex #user-info .list-group-item .profile-name-holder a:hover {
+  color: #7e6c91;
+}
+
+/*# sourceMappingURL=home.css.map */
