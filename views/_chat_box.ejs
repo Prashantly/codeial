@@ -1,5 +1,4 @@
-
-<link rel="stylesheet" href="/css/chat.css">
+<link rel="stylesheet" href="<%= assetPath('css/chat.css') %>">
 
 <button class="open-button" onclick="openChat()">Chat</button>
 
@@ -8,7 +7,7 @@
 
     <div class="brand">
 
-        <img src="/images/chatsup.png" height="45" alt="chat-logo">
+        <img src="<%= assetPath('images/chatsup.png') %>" height="45" alt="chat-logo">
         <h1>Chatsup</h1>
 
         <div class="cancel-chat" onclick="closeChat()">
@@ -40,7 +39,7 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js" integrity="sha512-xbQU0+iHqhVt7VIXi6vBJKPh3IQBF5B84sSHdjKiSccyX/1ZI7Vnkt2/8y8uruj63/DVmCxfUNohPNruthTEQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="/js/chat_engine.js"></script>
+<script src="<%= assetPath('js/chat_engine.js') %>"></script>
 
 <!--script to open and close chat box -->
 <script>

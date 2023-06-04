@@ -1,217 +1,273 @@
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+  crossorigin="anonymous"
+/>
 
+<script
+  src="https://kit.fontawesome.com/8795c14952.js"
+  crossorigin="anonymous"
+></script>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
-<script src="https://kit.fontawesome.com/8795c14952.js" crossorigin="anonymous"></script>
-
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="<%= assetPath('css/home.css') %>" />
 
 <div id="home-flex">
-
-    <!-- ----------*********------------------ -->
-    <div class="home-flex-child" id="user-dashboard">
-        <div id="absolute-div-dashboard">
-            <%if(locals.user){%>
-                <div class="card m-4" style="width: 18rem">
-                    <div id="dashboard-pic">
-                        <%if(locals.user.avatar){%>
-                            <img src="<%=locals.user.avatar%>" alt="image">
-                            <%}else{%>
-                                <img src="/images/avatar1.png" alt="image">
-                            <%}%>
-                    </div>
-
-                    <div class="card-body">
-
-                        <h5 class="card-title text-capitalize text-center">
-                            <%=locals.user.name%>
-                        </h5>
-                        <div id="friends-dashboard-count" class="d-flex flex-row justify-content-between">
-                            <h5>Friends</h5>
-                            <h5>
-                                <%=locals.user.friendships.length%>
-                            </h5>
-                        </div>
-
-                        <div class="text-center">
-
-                            <a href="/users/profile/<%=locals.user.id%>" style="text-decoration: none">
-                                Visit Profile
-                                <i class="fas fa-user-circle"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <%}%>
+  <!-- ----------*********------------------ -->
+  <div class="home-flex-child" id="user-dashboard">
+    <div id="absolute-div-dashboard">
+      <% if (locals.user) { %>
+      <div class="card m-4" style="width: 18rem">
+        <div id="dashboard-pic">
+          <%if(locals.user.avatar){%>
+          <img src="<%=locals.user.avatar%>" alt="image" />
+          <%}else{%>
+          <img src="<%= assetPath('images/avatar2.png') %>" alt="image" />
+          <%}%>
         </div>
+
+        <div class="card-body">
+          <h5 class="card-title text-capitalize text-center">
+            <%=locals.user.name%>
+          </h5>
+          <div
+            id="friends-dashboard-count"
+            class="d-flex flex-row justify-content-between"
+          >
+            <h5>Friends</h5>
+            <h5><%=locals.user.friendships.length%></h5>
+          </div>
+
+          <div class="text-center">
+            <a
+              href="/users/profile/<%=locals.user.id%>"
+              style="text-decoration: none"
+            >
+              Visit Profile
+              <i class="fas fa-user-circle"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <%}%>
+    </div>
+  </div>
+
+  <!-- ----------*********------------------ -->
+  <div class="home-flex-child" id="post-info">
+    <div class="card m-4" style="width: 590px; min-width: 440px">
+      <div class="card-header">
+        <ul
+          class="nav nav-tabs card-header-tabs d-none d-lg-flex"
+          id="myTab"
+          role="tablist"
+        >
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link active"
+              data-bs-toggle="tab"
+              role="tab"
+              aria-current="true"
+              href="#posts-tab"
+              >Post</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              data-bs-toggle="tab"
+              role="tab"
+              aria-current="true"
+              href="#images-tab"
+              >Images</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="card-body">
+        <div class="tab-content accordion" id="myTabContent">
+          <div
+            class="tab-pane fade show active accordion-item"
+            id="posts-tab"
+            role="tabpanel"
+            aria-labelledby="posts-tab-link"
+            tabindex="0"
+          >
+            <h5 class="card-title m-3 mb-4">
+              Hey, tell your friends about you
+            </h5>
+            <form
+              class="d-flex flex-column"
+              action="/posts/addPost"
+              id="new-post-form"
+              method="POST"
+            >
+              <textarea
+                class="form-area mb-3"
+                name="content"
+                placeholder="Type here.."
+                required
+              ></textarea>
+              <button
+                type="submit"
+                class="btn btn-primary mb-3"
+                value="Post"
+                form="new-post-form"
+              >
+                Post
+              </button>
+            </form>
+          </div>
+
+          <div
+            class="tab-pane fade"
+            id="images-tab"
+            role="tabpanel"
+            aria-labelledby="images-tab-link"
+          >
+            <form
+              action="/posts/uploadImage"
+              method="POST"
+              enctype="multipart/form-data"
+              id="post-image-form"
+            >
+              <div id="flex-input">
+                <div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    class="form-control"
+                    name="postImage"
+                    id="post-file-upload"
+                    onchange="loadFile(event)"
+                    required
+                  />
+                </div>
+              </div>
+            </form>
+
+            <div id="preview-image">
+              <img id="output" />
+            </div>
+
+            <input
+              type="submit"
+              class="btn btn-primary"
+              value="Post"
+              form="post-image-form"
+            />
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- ----------*********------------------ -->
-    <div class="home-flex-child" id="post-info">
-        <div class="card m-4">
-            <div class="card-header">
-                <ul class="nav nav-tabs card-header-tabs d-none d-lg-flex" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active" data-bs-toggle="tab" role="tab" aria-current="true"
-                            href="#posts-tab">Post</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" data-bs-toggle="tab" role="tab" aria-current="true"
-                            href="#images-tab">Images</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="card-body">
-                <div class="tab-content accordion" id="myTabContent">
-                    <div class="tab-pane fade show active accordion-item" id="posts-tab" role="tabpanel"
-                        aria-labelledby="posts-tab-link" tabindex="0">
-                        <h5 class="card-title">Hey, tell your friends about you</h5>
-                        <form action="/posts/addPost" id="new-post-form" method="POST">
-
-                            <textarea class="form-area" name="content" placeholder="Type here.." required></textarea>
-                            <button type="submit" class="btn btn-primary mx-1 mb-4" value="Post"
-                                form="new-post-form">Post
-                            </button>
-                        </form>
-
-                    </div>
-
-                    <div class="tab-pane fade" id="images-tab" role="tabpanel" aria-labelledby="images-tab-link">
-
-                        <form action="/posts/uploadImage" method="POST" enctype="multipart/form-data"
-                            id="post-image-form">
-
-                            <div id="flex-input">
-                                <div>
-                                    <input type="file" accept="image/*" class="form-control" name="postImage"
-                                        id="post-file-upload" onchange="loadFile(event)" required>
-                                </div>
-                            </div>
-                        </form>
-
-                        <div id="preview-image">
-                            <img id="output">
-                        </div>
-
-                        <input type="submit" class="btn btn-primary" value="Post" form="post-image-form" />
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="posts-list-container">
-            <div>
-                <% for (post of posts) {%><%- include("_post") %>
-                        <%}%>
-            </div>
-        </div>
-
+    <div id="posts-list-container">
+      <div><% for (post of posts) {%><%- include("_post") %> <%}%></div>
     </div>
+  </div>
 
-    <!-- ----------*********------------------ -->
+  <!-- ----------*********------------------ -->
 
-    <div class="home-flex-child right-text" id="user-info">
-        <div id="absolute-div-user">
-
-            <!-- Users list -->
-            <div style="margin-bottom: 20px;">
-                <h4>Users</h4>
-            <% for(u of all_users){%>
-                <div class="list-group-item list-group-item-action list-group-item-info d-flex flex-row profile-info">
-                    <h3 class="profile-pic-holder">
-                        <%if(u.avatar){%>
-                        <img src="<%=u.avatar%>" alt="image">
-                        <%}else{%>
-                        <img src="/images/avatar2.png" alt="img">
-                        <%}%>
-                    </h3>
-                    <p class="profile-name-holder">
-                         <a href="/users/profile/<%=u._id%>"><%=u.name%></a>
-                    </p>
-                </div>
+  <div class="home-flex-child right-text" id="user-info">
+    <div id="absolute-div-user">
+      <!-- Users list -->
+      <div style="margin-bottom: 20px">
+        <h4>Users</h4>
+        <% for(u of all_users){%>
+        <div
+          class="list-group-item list-group-item-action list-group-item-info d-flex flex-row profile-info"
+        >
+          <h3 class="profile-pic-holder">
+            <%if(u.avatar){%>
+            <img src="<%=u.avatar%>" alt="image" />
+            <%}else{%>
+            <img src="<%= assetPath('images/avatar2.png') %>" alt="img" />
             <%}%>
-            </div>
-
-            <!-- friends list -->
-
-            <div>
-                <%if(locals.user){%>
-                <h4>Friends</h4>
-                <% for(friend of all_friends){%>
-                <div class="list-group-item list-group-item-action list-group-item-info d-flex flex-row profile-info">
-                    <h3 class="profile-pic-holder">
-                        <%if(friend.avatar){%>
-                           <img src="<%=friend.avatar%>" alt="image">
-                        <%}else{%>
-                            <img src="/images/avatar2.png" alt="image">
-                           
-                        <%}%>
-                    </h3>
-
-                    <p class="profile-name-holder">
-                        <a href="/users/profile/<%=friend._id%>"><%=friend.name%></a>
-                    </p>
-                </div>
-                <%}%> 
-                <%}%>
-            </div>
+          </h3>
+          <p class="profile-name-holder">
+            <a href="/users/profile/<%=u._id%>"><%=u.name%></a>
+          </p>
         </div>
-    </div>
+        <%}%>
+      </div>
 
-    <%if(locals.user){%>
-    <%- include('_chat_box') %>
-    <%}%> 
+      <!-- friends list -->
+
+      <div>
+        <%if(locals.user){%>
+        <h4>Friends</h4>
+        <% for(friend of all_friends){%>
+        <div
+          class="list-group-item list-group-item-action list-group-item-info d-flex flex-row profile-info"
+        >
+          <h3 class="profile-pic-holder">
+            <%if(friend.avatar){%>
+            <img src="<%=friend.avatar%>" alt="image" />
+            <%}else{%>
+            <img src="<%= assetPath('images/avatar2.png') %>" alt="image" />
+
+            <%}%>
+          </h3>
+
+          <p class="profile-name-holder">
+            <a href="/users/profile/<%=friend._id%>"><%=friend.name%></a>
+          </p>
+        </div>
+        <%}%> <%}%>
+      </div>
+    </div>
+  </div>
+
+  <%if(locals.user){%> <%- include('_chat_box') %> <%}%>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-    crossorigin="anonymous"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+  crossorigin="anonymous"
+></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
-    </script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+  integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+  crossorigin="anonymous"
+></script>
 
-
-<script src="/js/home_post_comments.js"></script>
-<script src="/js/home_posts.js"></script>
-<script src="/js/toggle_likes.js"> </script>
+<script src="<%= assetPath('js/home_post_comments.js') %>"></script>
+<script src="<%= assetPath('js/home_posts.js') %>"></script>
+<script src="<%= assetPath('js/toggle_likes.js') %>"></script>
 <script>
-    $('.toggle-like-button').each(function () {
-        let self = this;
-        let toggleLike = new ToggleLike(self);
-    }); 
+  $(".toggle-like-button").each(function () {
+    let self = this;
+    let toggleLike = new ToggleLike(self);
+  });
 </script>
 
 <script>
-    var loadFile = function (event) {
-      var output = document.getElementById("output");
-      output.src = URL.createObjectURL(event.target.files[0]);
-      output.onload = function () {
-        URL.revokeObjectURL(output.src); // free memory
-      };
+  var loadFile = function (event) {
+    var output = document.getElementById("output");
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function () {
+      URL.revokeObjectURL(output.src); // free memory
     };
+  };
 </script>
 
 <%if(locals.user){%>
 <script>
-
-    new chatEngine('<%=locals.user.name%>');
-    
+  new chatEngine("<%=locals.user.name%>");
 </script>
 <%}%>
 
 <script>
-    $(".post-date").each(function(){
+  $(".post-date").each(function () {
+    let selfDate = $(this).text();
+    selfDate = selfDate.trim();
+    let month = selfDate.substring(4, 7);
+    let date = selfDate.substring(8, 10);
+    let newdate = date + " " + month + " at " + selfDate.substring(17, 21);
 
-        let selfDate = $(this).text();
-        selfDate = selfDate.trim();
-        let month = selfDate.substring(4,7);
-        let date = selfDate.substring(8,10);
-        let newdate = date + " " + month + " at " + selfDate.substring(17,21);
-
-        $(this).text(newdate);
-    })
+    $(this).text(newdate);
+  });
 </script>

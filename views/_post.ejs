@@ -1,112 +1,132 @@
+<link rel="stylesheet" href="<%= assetPath('css/post.css') %>" />
 
-<link rel="stylesheet" href="/css/post.css">
+<div class="card m-4" id="post-<%=post._id%>" style="list-style-type: none">
+  <div class="card-header">
+    <div class="d-flex flex-row justify-content-between">
+      <div class="d-flex flex-row profile-info">
+        <h4 class="profile-pic-holder">
+          <%if(post.user.avatar){%>
+          <img src="<%=post.user.avatar%>" />
+          <%}else{%>
+          <img src="<%= assetPath('images/avatar1.png') %>" alt="image" />
+          <%}%>
+        </h4>
+        <h5 class="text-capitalize profile-name-holder">
+          <%= post.user.name %>
+          <p class="post-date"><%=post.createdAt%></p>
+        </h5>
+      </div>
 
-<div class="card m-4" id="post-<%=post._id%>" style="list-style-type: none;">
+      <% if(locals.user && post.user.id==locals.user.id){%>
+      <div class="dropdown">
+        <a
+          class="dropdown-toggle"
+          role="button"
+          id="dropdownMenuLink-<%=post.id %>"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="fas fa-ellipsis-v"></i>
+        </a>
 
-    <div class="card-header">
-        <div class="d-flex flex-row justify-content-between">
-            <div class="d-flex flex-row profile-info">
-                <h4 class="profile-pic-holder">
-                    <%if(post.user.avatar){%>
-                        <img src="<%=post.user.avatar%>">
-                        <%}else{%>
-                            <img src="/images/avatar1.png" alt="image">
-                            <%}%>
-
-                </h4>
-                <h5 class="text-capitalize profile-name-holder">
-                    <%= post.user.name %>
-                        <p class="post-date">
-                            <%=post.createdAt%>
-                        </p>
-                </h5>
-
-            </div>
-
-            <% if(locals.user && post.user.id==locals.user.id){%>
-                <div class="dropdown">
-                    <a class="dropdown-toggle" role="button" id="dropdownMenuLink-<%=post.id %>"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v"></i>
-                    </a>
-
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink-<%=post.id %>">
-                        <li><a class="delete-post-button dropdown-item" href="/posts/destroy/<%= post.id %>">Delete</a>
-                        </li>
-                    </ul>
-                </div>
-                <%}%>
-        </div>
+        <ul
+          class="dropdown-menu"
+          aria-labelledby="dropdownMenuLink-<%=post.id %>"
+        >
+          <li>
+            <a
+              class="delete-post-button dropdown-item"
+              href="/posts/destroy/<%= post.id %>"
+              >Delete</a
+            >
+          </li>
+        </ul>
+      </div>
+      <%}%>
     </div>
+  </div>
 
-    <div class="card-body">
+  <div class="card-body">
     <%if(post.postImage){%>
-        <div class="posted-image">
-            <img src="<%= post.postImage%>" alt="post">
-        </div>
-    <%}else{%>
-        <p>
-            <small>
-                <%=post.content%>
-            </small>
-            <br>
-        </p>
-    <%}%>
+    <div class="posted-image">
+      <img src="<%= post.postImage%>" alt="post" />
     </div>
-    <%if(locals.user){%>
-        <div class="card-footer text-muted d-flex flex-row">
+    <%}else{%>
+    <p class="fw-bold fs-6">
+      <%=post.content%>
 
-            <div class="mx-2">
-                <%if(locals.user){%>
-                    <% if(post.likes.find(x=> x.user == locals.user.id)){ %>
-                    <a class="toggle-like-button" data-likes="<%=post.likes.length%>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
-                        <%=post.likes.length%> <i class="fas fa-thumbs-up"></i>
-                    </a>
-                    <% } else{ %>
-                    <a class="toggle-like-button" data-likes="<%=post.likes.length%>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
-                        <%=post.likes.length%> <i class="far fa-thumbs-up"></i>
-                    </a>
-                    <% } %>
-                <%}else{%>
-                    <%=post.likes.length%> <i class="far fa-thumbs-up"></i>
-               <%}%>
+      <br />
+    </p>
+    <%}%>
+  </div>
+  <%if(locals.user){%>
+  <div class="card-footer text-muted d-flex flex-row">
+    <div class="mx-2">
+      <%if(locals.user){%> <% if(post.likes.find(x=> x.user == locals.user.id)){
+      %>
+      <a
+        class="toggle-like-button"
+        data-likes="<%=post.likes.length%>"
+        href="/likes/toggle/?id=<%=post._id%>&type=Post"
+      >
+        <%=post.likes.length%> <i class="fas fa-thumbs-up"></i>
+      </a>
+      <% } else{ %>
+      <a
+        class="toggle-like-button"
+        data-likes="<%=post.likes.length%>"
+        href="/likes/toggle/?id=<%=post._id%>&type=Post"
+      >
+        <%=post.likes.length%> <i class="far fa-thumbs-up"></i>
+      </a>
+      <% } %> <%}else{%> <%=post.likes.length%> <i class="far fa-thumbs-up"></i>
+      <%}%>
+    </div>
 
-            </div>
+    <div class="mx-2">
+      <button
+        class="btn btn-link btn-block"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#post-<%=post._id%>-collapse"
+        aria-expanded="false"
+      >
+        <h4>
+          <i class="fas fa-comment"></i>
+          Comments
+        </h4>
+      </button>
+    </div>
+  </div>
 
-            <div class="mx-2">
-                <button class="btn btn-link btn-block" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#post-<%=post._id%>-collapse" aria-expanded="false">
-                    <h4>
-                        <i class="fas fa-comment"></i>
-                        Comments
-                    </h4>
-                </button>
-            </div>
-        </div>
-
-        <div id="post-<%=post._id%>-collapse" class="collapse card-footer">
-            <div class="card-body">
-                <div>
-                    <% if(locals.user){ %>
-                        <form action="/comments/create" method="POST" id="post-<%= post._id %>-comments-form">
-                            <input type="text" name="content" placeholder="Add your comment" required>
-                            <input type="hidden" name="post" value="<%= post._id%>">
-                            <input type="submit" value="Add">
-                        </form>
-                        <%}%>
-                </div>
-
-                <div class="post-comment-list">
-                    <ul id="post-comments-<%=post._id%>">
-                        <% for(comment of post.comments){ %>
-
-                            <%- include("_comment") %>
-
-                                <%}%>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
+  <div id="post-<%=post._id%>-collapse" class="collapse card-footer">
+    <div class="card-body">
+      <div>
+        <% if(locals.user){ %>
+        <form
+          action="/comments/create"
+          method="POST"
+          id="post-<%= post._id %>-comments-form"
+        >
+          <input
+            type="text"
+            name="content"
+            placeholder="Add your comment"
+            required
+          />
+          <input type="hidden" name="post" value="<%= post._id%>" />
+          <input type="submit" value="Add" />
+        </form>
         <%}%>
+      </div>
+
+      <div class="post-comment-list">
+        <ul id="post-comments-<%=post._id%>">
+          <% for(comment of post.comments){ %> <%- include("_comment") %> <%}%>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <%}%>
 </div>

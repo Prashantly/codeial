@@ -52,6 +52,8 @@
 
     let newPostDom = function (post) {
 
+        let path = "/images/avatar2-952aeb5b63.png";
+
         return $(`
         <div class="card m-4" id="post-${post._id}" style="list-style-type: none;">
 
@@ -60,10 +62,9 @@
             <div class="d-flex flex-row profile-info">
                 <h3 class="profile-pic-holder" style="width: 55px; height: 55px; margin: 0px 5px;">
                     
-                ${post.user.avatar ? `<img src="${post.user.avatar}" alt="image" style = "width: 100%;height: 100%; border-radius: 50px;"alt="image">`
-                        
-                    : `<img src="/images/avatar1.png" alt="image" style = "width: 100%;height: 100%; border-radius: 50px;">`
-                }         
+                <img src='${post.user.avatar?post.user.avatar:path}' alt="image" style = "width: 100%;height: 100%; border-radius: 50px;">
+                
+                
 
                 </h3>
                 <h4 class="text-capitalize profile-name-holder">
@@ -141,6 +142,8 @@
 
     }
 
+    console.log(newPostDom);
+
     //method to delete post from DOM
 
     let deletePost = function(deleteLink){
@@ -191,6 +194,10 @@
             // console.log(PostId);
             new PostComments(PostId);
         })
+    }
+
+    let assetPath = (filePath) => {
+
     }
 
     

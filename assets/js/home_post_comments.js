@@ -56,7 +56,7 @@ class PostComments {
     <div class="media m-2 border-bottom">
         <h3 class="profile-pic-holder style="width: 55px; height: 55px; margin: 0px 5px;">
         ${comment.user.avatar ? `<img src="${comment.user.avatar}" alt="image"  style = "width: 100%;height: 100%; border-radius: 50px;">`
-        :`<img src="/images/avatar1.png" style = "width: 100%;height: 100%; border-radius: 50px;" alt="image">`
+        :`<img src="<%= assetPath('images/avatar1.png') %>" style = "width: 100%;height: 100%; border-radius: 50px;" alt="image">`
     }
         </h3>
 

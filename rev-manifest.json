@@ -4,7 +4,7 @@
   "css/comment.css": "css/comment-b18e5dea68.css",
   "css/footer.css": "css/footer-30d435d0d7.css",
   "css/header.css": "css/header-b829246b60.css",
-  "css/home.css": "css/home-6a8d722223.css",
+  "css/home.css": "css/home-954a29422e.css",
   "css/layout.css": "css/layout-5a227c5227.css",
   "css/post.css": "css/post-0b31dfc77f.css",
   "css/signin.css": "css/signin-2b997e1de4.css",
@@ -12,5 +12,9 @@
   "css/user_profile.css": "css/user_profile-e28039784d.css",
   "images/avatar1.png": "images/avatar1-b7f7d4834d.png",
   "images/avatar2.png": "images/avatar2-952aeb5b63.png",
-  "images/chatsup.png": "images/chatsup-40c7889de7.png"
+  "images/chatsup.png": "images/chatsup-40c7889de7.png",
+  "js/chat_engine.js": "js/chat_engine-815bfd85e5.js",
+  "js/home_post_comments.js": "js/home_post_comments-14cb1a12ef.js",
+  "js/home_posts.js": "js/home_posts-5b019550a0.js",
+  "js/toggle_likes.js": "js/toggle_likes-ff6a793a6b.js"
 }
