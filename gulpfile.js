@@ -8,11 +8,12 @@ var plumber = require("gulp-plumber");
 
 //append content hashes to the filenames of assets (CSS, JS, images, etc.) during the build process. This is useful for cache-busting purposes.
 const rev = require("gulp-rev");
+//used to minify javascript
 const uglify = require("gulp-uglify-es").default;
 const imagemin = require("gulp-imagemin");
 const del = require("del");
 
-gulp.task("css", function () {
+gulp.task("css", () => {
   console.log("minifying css...");
   //** means any folder and every subfolder inside it and *.scss means every file with .scss
   return (
@@ -26,8 +27,6 @@ gulp.task("css", function () {
       //gulp-rev also creates a manifest file(by default named rev-manifest.json)
       .pipe(rev())
       .pipe(gulp.dest("./public/assets")) //write rev'd assets to build dir
-      .pipe(plumber())
-      //maps the original filenames to their revised filenames. This manifest file is typically used by other build tools or server-side code to reference the updated asset filenames correctly.
       .pipe(
         rev.manifest({
           base: "./public/assets",
@@ -38,11 +37,12 @@ gulp.task("css", function () {
   );
 });
 
-gulp.task("js", function (done) {
+gulp.task("js", (done) => {
   console.log("minifying js...");
 
   gulp
     .src("./assets/**/*.js")
+    .pipe(plumber())
     .pipe(uglify())
     .pipe(rev())
     .pipe(gulp.dest("./public/assets")) //write rev'd assets to build dir
@@ -56,11 +56,12 @@ gulp.task("js", function (done) {
   done();
 });
 
-gulp.task("images", function (done) {
+gulp.task("images", (done) => {
   console.log("compressing images...");
 
   gulp
     .src("./assets/**/*.+(png|jpg|gif|svg|jpeg)")
+    .pipe(plumber())
     .pipe(imagemin())
     .pipe(rev())
     .pipe(gulp.dest("./public/assets")) //write rev'd assets to build dir
@@ -74,7 +75,8 @@ gulp.task("images", function (done) {
   done();
 });
 
-gulp.task("clean:assets", function (done) {
+//empty the public/assets directory (clear the previous build and build agin from scratch)
+gulp.task("clean:assets", (done) => {
   del.sync("./public/assets");
   del.sync("./rev-manifest.json");
   done();
@@ -83,7 +85,7 @@ gulp.task("clean:assets", function (done) {
 gulp.task(
   "build",
   gulp.series("clean:assets", "css", "js", "images"),
-  function (done) {
+  (done) => {
     console.log("Building assets");
     done();
   }
