@@ -55,6 +55,7 @@
 
   <!-- ----------*********------------------ -->
   <div class="home-flex-child" id="post-info">
+    <% if (locals.user) { %>
     <div class="card m-4" style="width: 590px; min-width: 440px">
       <div class="card-header">
         <ul
@@ -161,6 +162,7 @@
         </div>
       </div>
     </div>
+    <%}%>
 
     <div id="posts-list-container">
       <div><% for (post of posts) {%><%- include("_post") %> <%}%></div>

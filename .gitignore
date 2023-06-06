@@ -1,1 +1,4 @@
 node_modules/
+/production_logs
+/configurations/environment.js
+/configurations/environment.js.template
