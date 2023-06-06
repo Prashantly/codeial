@@ -51,19 +51,21 @@ body #chat_section .message-area .message {
 }
 body #chat_section .message-area .message h4 {
   position: absolute;
-  left: 0;
-  top: -20px;
+  left: 0px;
+  top: -23px;
   color: #333;
   font-size: 15px;
 }
 body #chat_section .message-area .incoming {
-  background: #8F8BE8;
+  background: #8f8be8;
   color: #fff;
 }
 body #chat_section .message-area .outgoing {
   background: #e9eafd;
   color: #787986;
   margin-left: auto;
+  margin-top: 17px;
+  width: 130px;
 }
 body #chat_section .message-area::-webkit-scrollbar {
   width: 0;

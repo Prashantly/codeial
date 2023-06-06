@@ -14,24 +14,23 @@ const accessLogStream = rfs.createStream("access.log", {
 const development = {
   name: "development",
   asset_path: "./assets",
-  session_cookie_key: "something",
-  db: "codeial_dev",
+  session_cookie_key: " ",
+  db: " ",
   smtp: {
     service: "gmail",
     host: "smtp.gmail.com",
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: "prashantyallatti79968@gmail.com", // generated gmail user
-      pass: "vmzfwwiqdtxtifoe", // generated gmail password
+      user: " ", // generated gmail user
+      pass: " ", // generated gmail password
     },
   },
 
-  google_client_id:
-    "613430340252-1ivj8tp4hbof93n08181tbre3625njrc.apps.googleusercontent.com",
-  google_client_secret: "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",
-  google_callback_url: "http://codeial.com/users/auth/google/callback",
-  jwt_secret: "codeial",
+  google_client_id: " ",
+  google_client_secret: " ",
+  google_callback_url: " ",
+  jwt_secret: " ",
   // setup the logger
   morgan: {
     mode: "dev",

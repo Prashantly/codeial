@@ -1,116 +1,113 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background: #f8f8f8;
-    font-family: 'Roboto', sans-serif;
+  background: #f8f8f8;
+  font-family: "Roboto", sans-serif;
 
-    #chat_section {
-            display: none;
-            position: fixed;
-            bottom: 10px;
-            left: 10px;
-            width: 300px;
-            max-width: 80%;
-            background: #fff;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  #chat_section {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 300px;
+    max-width: 80%;
+    background: #fff;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
-            .brand {
-                padding: 5px;
-                background-color: #f1f1f1;
-                display: flex;
-                align-items: center;
-                position: relative;
+    .brand {
+      padding: 5px;
+      background-color: #f1f1f1;
+      display: flex;
+      align-items: center;
+      position: relative;
 
-                h1 {
-                    text-transform: uppercase;
-                    font-size: 16px;
-                    font-weight: bold;
-                    color: #444;
-                    margin-left: 7px;
-                }
-            }
-
-            .message-area {
-                height: 380px;
-                padding: 10px;
-                display: flex;
-                flex-direction: column;
-                /* show scrollbar only when it is necessery */
-                overflow-y: auto;
-                padding-top: 40px;
-
-                .message {
-                    padding: 6px;
-                    border-radius: 4px;
-                    margin-bottom: 40px;
-                    max-width: 60%;
-                    position: relative;
-
-                    h4 {
-
-                        position: absolute;
-                        left: 0;
-                        top: -20px;
-                        color: #333;
-                        font-size: 15px;
-                    }
-                }
-
-                .incoming {
-                    background: #8F8BE8;
-                    color: #fff;
-                }
-
-                .outgoing {
-                    background: #e9eafd;
-                    color: #787986;
-                    margin-left: auto;
-                }
-            }
-
-            .message-area::-webkit-scrollbar {
-                width: 0;
-                display: none;
-            }
-
-            #textarea {
-                width: 100%;
-                border: none;
-                padding: 12px;
-                font-size: 16px;
-                outline: none;
-                background-color: #f0eaea;
-            }
-
-            .cancel-chat{
-
-                position: absolute;
-                right: 12px;
-                cursor: pointer;
-                text-align: center;
-                
-            }
-        }
-
-    
-
-    .open-button {
-        background-color: #4c4cc2;
-        color: white;
-        padding: 16px 20px;
-        border: none;
-        cursor: pointer;
-        opacity: 0.8;
-        position: fixed;
-        bottom: 10px;
-        left: 25px;
-        width: 300px;
+      h1 {
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: bold;
+        color: #444;
+        margin-left: 7px;
+      }
     }
 
+    .message-area {
+      height: 380px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      /* show scrollbar only when it is necessery */
+      overflow-y: auto;
+      padding-top: 40px;
+
+      .message {
+        padding: 6px;
+        border-radius: 4px;
+        margin-bottom: 40px;
+        max-width: 60%;
+        position: relative;
+
+        h4 {
+          position: absolute;
+          left: 0px;
+          top: -23px;
+          color: #333;
+          font-size: 15px;
+        }
+      }
+
+      .incoming {
+        background: #8f8be8;
+        color: #fff;
+      }
+
+      .outgoing {
+        background: #e9eafd;
+        color: #787986;
+        margin-left: auto;
+        margin-top: 17px;
+        width: 130px;
+      }
+    }
+
+    .message-area::-webkit-scrollbar {
+      width: 0;
+      display: none;
+    }
+
+    #textarea {
+      width: 100%;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      outline: none;
+      background-color: #f0eaea;
+    }
+
+    .cancel-chat {
+      position: absolute;
+      right: 12px;
+      cursor: pointer;
+      text-align: center;
+    }
+  }
+
+  .open-button {
+    background-color: #4c4cc2;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 10px;
+    left: 25px;
+    width: 300px;
+  }
 }
